@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <title>Damn That Was Hard</title>
 
-    <link rel="stylesheet" type="text/css" href="../../pub/css/index.css">
-    <link rel="stylesheet" type="text/css" href="../../pub/css/nav_footer.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/index.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav_footer.css">
 </head>
 <body>
-<jsp:include page="include/nav.jsp" />
+<jsp:include page="../include/nav.jsp" />
 
 <main>
     <section class="topSection">
@@ -26,7 +26,7 @@
     </section>
 </main>
 
-<jsp:include page="include/footer.jsp" />
+<jsp:include page="../include/footer.jsp" />
 
 </body>
 </html>

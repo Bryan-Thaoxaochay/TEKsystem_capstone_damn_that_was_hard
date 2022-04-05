@@ -10,7 +10,7 @@ public class IndexController {
     @GetMapping("/")
     public ModelAndView index() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("index");
+        response.setViewName("home/index");
 
         return response;
     }
