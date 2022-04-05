@@ -13,7 +13,7 @@
 <main>
     <section class="topSection">
         <h3>Everyone has a motivating story to tell.</h3>
-        <a href="#">Click Here to Read Them</a>
+        <a href="/posts">Click Here to Read Them</a>
         <blockquote>If you're going through hell, keep going.</blockquote>
         <p><em>~ Winston Churchill</em></p>
     </section>
