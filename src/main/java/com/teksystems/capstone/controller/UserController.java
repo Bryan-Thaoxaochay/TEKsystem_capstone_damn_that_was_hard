@@ -14,4 +14,12 @@ public class UserController {
 
         return response;
     }
+
+    @GetMapping("/user/sign-in")
+    public ModelAndView displaySignInPage() throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/sign-in");
+
+        return response;
+    }
 }

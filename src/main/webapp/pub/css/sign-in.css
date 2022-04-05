@@ -1,0 +1,17 @@
+label {
+    display: block;
+    margin: 1rem;
+}
+
+button {
+    margin: 1rem;
+}
+
+section p {
+    margin: 2rem;
+}
+
+section p a {
+    color: blue;
+    text-decoration: none;
+}
