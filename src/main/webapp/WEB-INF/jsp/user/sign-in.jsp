@@ -23,7 +23,7 @@
 </main>
 
 <section>
-    <p>If you don't have an account: <a href="#">create an account</a></p>
+    <p>If you don't have an account: <a href="/user/sign-up">create an account</a></p>
 </section>
 
 <jsp:include page="../include/footer.jsp" />

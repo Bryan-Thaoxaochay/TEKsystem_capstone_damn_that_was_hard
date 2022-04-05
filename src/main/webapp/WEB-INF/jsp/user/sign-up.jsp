@@ -33,7 +33,7 @@
 </main>
 
 <section>
-    <p>If you already have an account: <a href="#">sign in</a></p>
+    <p>If you already have an account: <a href="/user/sign-in">sign in</a></p>
 </section>
 
 <jsp:include page="../include/footer.jsp" />

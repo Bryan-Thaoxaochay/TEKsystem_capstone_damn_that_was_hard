@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 
-    @GetMapping("/")
+    @GetMapping("/home/index")
     public ModelAndView index() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("home/index");
