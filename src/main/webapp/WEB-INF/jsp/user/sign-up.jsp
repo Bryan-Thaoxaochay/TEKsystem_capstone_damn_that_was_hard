@@ -11,7 +11,7 @@
 <jsp:include page="../include/nav.jsp" />
 
 <main>
-    <form action="#" name="signUpForm" id="signUpForm">
+    <form action="/user/sign-up/submit" method="post" name="signUpForm" id="signUpForm">
         <h2>Create an Account</h2>
         <fieldset>
             <legend>Fill in the info below</legend>
@@ -23,7 +23,7 @@
 
             <label for="signUpForm" id="passwordLabel">Password: <input type="text" name="password" id="password" placeholder="Enter your password"></label>
 
-            <label for="signUpForm" id="confirmPasswordLabel">Confirm Password: <input type="text" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm your password"></label>
+            <label for="signUpForm" id="confirmPasswordLabel">Confirm Password: <input type="text" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password"></label>
 
             <label for="signUpForm" id="usernameLabel">Username: <input type="text" name="username" id="username" placeholder="Enter your username"></label>
 
