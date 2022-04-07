@@ -11,7 +11,7 @@
 <jsp:include page="../include/nav.jsp" />
 
 <main>
-    <form action="/user/sign-up/submit" method="post" name="signUpForm" id="signUpForm">
+    <form action="/user/sign_up/submit" method="post" name="signUpForm" id="signUpForm">
         <h2>Create an Account</h2>
         <fieldset>
             <legend>Fill in the info below</legend>
@@ -33,7 +33,7 @@
 </main>
 
 <section>
-    <p>If you already have an account: <a href="/user/sign-in">sign in</a></p>
+    <p>If you already have an account: <a href="/user/sign_in">sign in</a></p>
 </section>
 
 <jsp:include page="../include/footer.jsp" />

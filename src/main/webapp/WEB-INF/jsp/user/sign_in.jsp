@@ -12,18 +12,18 @@
 
 <main>
     <h2>Welcome Back</h2>
-    <form action="submit">
+    <form action="submit" id="signInForm">
       <fieldset>
         <legend>Please Log In</legend>
-        <label for="">Username: <input type="text" placeholder="Enter your username"></label>
-        <label for="">Password: <input type="text" placeholder="Enter your password"></label>
+        <label for="signInForm">Username: <input type="text" placeholder="Enter your username"></label>
+        <label for="signInForm">Password: <input type="text" placeholder="Enter your password"></label>
         <button type="submit">Login</button>
       </fieldset>
     </form>
 </main>
 
 <section>
-    <p>If you don't have an account: <a href="/user/sign-up">create an account</a></p>
+    <p>If you don't have an account: <a href="/user/sign_up">create an account</a></p>
 </section>
 
 <jsp:include page="../include/footer.jsp" />

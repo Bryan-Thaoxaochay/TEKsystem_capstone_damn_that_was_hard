@@ -14,31 +14,31 @@ public class UserController {
     @Autowired
     private UserDAO userDAO;
 
-    @GetMapping("/user/sign-up")
+    @GetMapping("/user/sign_up")
     public ModelAndView displaySignUpPage() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/sign-up");
+        response.setViewName("user/sign_up");
 
         return response;
     }
 
-    @GetMapping("/user/sign-in")
+    @GetMapping("/user/sign_in")
     public ModelAndView displaySignInPage() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("user/sign-in");
+        response.setViewName("user/sign_in");
 
         return response;
     }
 
     /*
     As a user, I want to create an account to get account features
-    1. Adjust form in sign-up.jsp to send data to this controller
+    1. Adjust form in sign_up.jsp to send data to this controller
     2. Update User entity to contain getters, setters, and variables in db
     3. Create bean for user registration
     4. Create UserDAO to save user to the db
     5. Create a POST method to handle the form data
     */
-    @PostMapping("/user/sign-up/submit")
+    @PostMapping("/user/sign_up/submit")
     public ModelAndView createUser(SignUpBean form) {
         ModelAndView response = new ModelAndView();
 
