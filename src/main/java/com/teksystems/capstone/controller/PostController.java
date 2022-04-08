@@ -9,20 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class PostController {
     @Autowired
     private PostDAO postDAO;
 
-    @GetMapping("/post")
+    @GetMapping("/posts")
     public ModelAndView displayPostsPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/posts");
 
+        List<Post> posts = postDAO.findAll();
+        response.addObject("posts", posts);
+
         return response;
     }
 
-    @GetMapping("/post/create_post")
+    @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/create_post");
@@ -30,7 +35,7 @@ public class PostController {
         return response;
     }
 
-    @PostMapping("/post/new_post")
+    @PostMapping("/posts/new_post")
     public ModelAndView createPost(PostBean form) {
         ModelAndView response = new ModelAndView();
 
