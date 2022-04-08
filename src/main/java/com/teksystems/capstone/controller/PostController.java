@@ -3,13 +3,17 @@ package com.teksystems.capstone.controller;
 import com.teksystems.capstone.bean.PostBean;
 import com.teksystems.capstone.database.dao.PostDAO;
 import com.teksystems.capstone.database.entity.Post;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -23,6 +27,17 @@ public class PostController {
 
         List<Post> posts = postDAO.findAll();
         response.addObject("posts", posts);
+
+        return response;
+    }
+
+    @GetMapping("/posts/post/{id}")
+    public ModelAndView displayPostPage(@PathVariable("id") Integer id) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("post/post");
+
+        Post post = postDAO.findById(id);
+        response.addObject("post", post);
 
         return response;
     }

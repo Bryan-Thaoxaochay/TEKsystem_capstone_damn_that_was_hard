@@ -11,15 +11,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../include/nav.jsp" />
 
-<main id="recentPosts">
-    <h2>Recent Stories</h2>
-    <c:forEach items="${posts}" var="post">
-        <section>
-            <h3>${post.topic}</h3>
-            <h4>${post.title}</h4>
-            <a href="/posts/post/${post.id}">Read Story</a>
-        </section>
-    </c:forEach>
+<main>
+    <h1>${post.title}</h1>
+    <h2>${post.topic}</h2>
+    <p>
+        ${post.description}
+    </p>
 </main>
 
 <jsp:include page="../include/footer.jsp" />
