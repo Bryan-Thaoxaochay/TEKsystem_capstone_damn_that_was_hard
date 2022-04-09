@@ -24,7 +24,7 @@ public class PostController {
     private CommentDAO commentDAO;
 
     @GetMapping("/posts")
-    public ModelAndView displayPostsPage() {
+    public ModelAndView getPosts() {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/posts");
 
@@ -35,7 +35,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/post/{id}")
-    public ModelAndView displayPostPage(@PathVariable("id") Integer id) throws Exception {
+    public ModelAndView getPostAndComments(@PathVariable("id") Integer id) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/post");
 
@@ -48,7 +48,7 @@ public class PostController {
         return response;
     }
 
-    @GetMapping("/posts/create_post")
+    @GetMapping("/posts/create_post") // Need to add a button that redirects to this URL
     public ModelAndView displayCreatePostPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/create_post");

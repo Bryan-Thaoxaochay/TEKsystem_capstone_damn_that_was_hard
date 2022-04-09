@@ -30,14 +30,6 @@ public class UserController {
         return response;
     }
 
-    /*
-    As a user, I want to create an account to get account features
-    1. Adjust form in sign_up.jsp to send data to this controller
-    2. Update User entity to contain getters, setters, and variables in db
-    3. Create bean for user registration
-    4. Create UserDAO to save user to the db
-    5. Create a POST method to handle the form data
-    */
     @PostMapping("/user/sign_up/submit")
     public ModelAndView createUser(SignUpBean form) {
         ModelAndView response = new ModelAndView();
