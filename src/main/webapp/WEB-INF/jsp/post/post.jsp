@@ -22,6 +22,9 @@
 <section>
     <jsp:include page="../comment/create_comment.jsp" />
 </section>
+<table>
+    <jsp:include page="../comment/comments.jsp" />
+</table>
 
 <jsp:include page="../include/footer.jsp" />
 
