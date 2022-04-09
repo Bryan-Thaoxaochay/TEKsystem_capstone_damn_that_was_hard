@@ -19,6 +19,10 @@
     </p>
 </main>
 
+<section>
+    <jsp:include page="../comment/comments.jsp" />
+</section>
+
 <jsp:include page="../include/footer.jsp" />
 
 </body>
