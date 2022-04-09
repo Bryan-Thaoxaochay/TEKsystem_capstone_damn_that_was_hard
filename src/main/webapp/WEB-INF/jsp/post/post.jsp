@@ -20,7 +20,7 @@
 </main>
 
 <section>
-    <jsp:include page="../comment/comments.jsp" />
+    <jsp:include page="../comment/create_comment.jsp" />
 </section>
 
 <jsp:include page="../include/footer.jsp" />
