@@ -9,6 +9,7 @@
 </head>
 <body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <jsp:include page="../include/nav.jsp" />
 
 <main>
@@ -19,9 +20,12 @@
     </p>
 </main>
 
-<section>
-    <jsp:include page="../comment/create_comment.jsp" />
-</section>
+<sec:authorize access="isAuthenticated()">
+    <section>
+        <jsp:include page="../comment/create_comment.jsp" />
+    </section>
+</sec:authorize>
+
 <table>
     <jsp:include page="../comment/comments.jsp" />
 </table>
