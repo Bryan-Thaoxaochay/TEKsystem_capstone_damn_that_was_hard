@@ -12,11 +12,11 @@
 
 <main>
     <h2>Welcome Back</h2>
-    <form action="submit" id="signInForm">
+    <form action="/user/sign_in/submit" id="signInForm" method="post">
       <fieldset>
         <legend>Please Log In</legend>
-        <label for="signInForm">Username: <input type="text" placeholder="Enter your username"></label>
-        <label for="signInForm">Password: <input type="text" placeholder="Enter your password"></label>
+        <label for="signInForm">Username: <input type="text" name="username" placeholder="Enter your username"></label>
+        <label for="signInForm">Password: <input type="text" name="password" placeholder="Enter your password"></label>
         <button type="submit">Login</button>
       </fieldset>
     </form>
