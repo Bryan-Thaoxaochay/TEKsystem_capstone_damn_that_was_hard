@@ -71,6 +71,7 @@ public class PostController {
         return response;
     }
 
+    // Mapping post form and creating a new post
     @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         ModelAndView response = new ModelAndView();
@@ -91,6 +92,35 @@ public class PostController {
         postDAO.save(post);
 
         response.setViewName("post/posts");
+        return response;
+    }
+
+    // Mapping post form and editing a post
+    @GetMapping("/posts/post/{postId}/edit")
+    public ModelAndView displayEditPostPage(@PathVariable("postId") Integer postId) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("post/create_post");
+
+        Post post = postDAO.findById(postId);
+        response.addObject("post", post);
+
+        return response;
+    }
+
+    @PostMapping("/post/{postId}/edit")
+    public ModelAndView editPost(@PathVariable("postId") Integer postId, PostBean form) {
+        ModelAndView response = new ModelAndView();
+
+        Post post = postDAO.findById(postId);
+        post.setId(form.getId());
+        post.setTopic(form.getTopic());
+        post.setTitle(form.getTitle());
+        post.setDescription(form.getDescription());
+        post.setUserId(form.getUserId());
+
+        postDAO.save(post);
+
+        response.setViewName("redirect:/posts/post/" + postId);
         return response;
     }
 }

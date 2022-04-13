@@ -13,6 +13,7 @@
 <jsp:include page="../include/nav.jsp" />
 
 <main>
+    <a href="/posts/post/${post.id}/edit">Edit Post</a>
     <h1>${post.title}</h1>
     <h2>${post.topic}</h2>
     <p>
