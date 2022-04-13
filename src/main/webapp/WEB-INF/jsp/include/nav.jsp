@@ -13,6 +13,12 @@
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <li>
+                <a href="/posts/create_post">Create a Post</a>
+            </li>
+            <li>
+                <a href="/posts/my_posts">My Posts</a>
+            </li>
+            <li>
                 <a href="/user/logout">Sign Out</a>
             </li>
         </sec:authorize>
