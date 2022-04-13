@@ -35,8 +35,5 @@
 <section>
     <p>If you already have an account: <a href="/user/sign_in">sign in</a></p>
 </section>
-
-<jsp:include page="../include/footer.jsp" />
-
 </body>
 </html>

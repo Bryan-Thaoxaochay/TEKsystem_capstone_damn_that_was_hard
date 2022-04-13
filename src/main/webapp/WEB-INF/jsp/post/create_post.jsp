@@ -38,8 +38,5 @@
     </c:otherwise>
     </c:choose>
 </main>
-
-<jsp:include page="../include/footer.jsp" />
-
 </body>
 </html>

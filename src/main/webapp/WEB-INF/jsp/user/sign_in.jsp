@@ -25,8 +25,5 @@
 <section>
     <p>If you don't have an account: <a href="/user/sign_up">create an account</a></p>
 </section>
-
-<jsp:include page="../include/footer.jsp" />
-
 </body>
 </html>

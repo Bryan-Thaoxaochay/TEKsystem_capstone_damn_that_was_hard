@@ -28,8 +28,5 @@
         </sec:authorize>
     </section>
 </main>
-
-<jsp:include page="../include/footer.jsp" />
-
 </body>
 </html>
