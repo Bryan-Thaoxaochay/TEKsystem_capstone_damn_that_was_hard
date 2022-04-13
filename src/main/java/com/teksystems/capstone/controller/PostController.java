@@ -3,10 +3,14 @@ package com.teksystems.capstone.controller;
 import com.teksystems.capstone.bean.PostBean;
 import com.teksystems.capstone.database.dao.CommentDAO;
 import com.teksystems.capstone.database.dao.PostDAO;
+import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.entity.Comment;
 import com.teksystems.capstone.database.entity.Post;
+import com.teksystems.capstone.database.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +27,32 @@ public class PostController {
     @Autowired
     private CommentDAO commentDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @GetMapping("/posts")
-    public ModelAndView getPosts() {
+    public ModelAndView getAllPosts() {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/posts");
 
         List<Post> posts = postDAO.findAll();
         response.addObject("posts", posts);
+
+        return response;
+    }
+
+    @GetMapping("/posts/my_posts")
+    public ModelAndView getUserPosts() {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("post/posts");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+
+        User user = userDAO.findByEmail(userEmail);
+
+        List<Post> userPosts = postDAO.findByUserId(user.getUserId());
+        response.addObject("posts", userPosts);
 
         return response;
     }
@@ -48,7 +71,7 @@ public class PostController {
         return response;
     }
 
-    @GetMapping("/posts/create_post") // Need to add a button that redirects to this URL
+    @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/create_post");
