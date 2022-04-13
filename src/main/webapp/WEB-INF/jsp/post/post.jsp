@@ -13,9 +13,11 @@
 <jsp:include page="../include/nav.jsp" />
 
 <main>
-    <a href="/posts/post/${post.id}/edit">Edit Post</a>
-    <h1>${post.title}</h1>
-    <h2>${post.topic}</h2>
+    <sec:authorize access="isAuthenticated()">
+        <a href="/posts/post/${post.id}/edit">Edit Post</a>
+    </sec:authorize>
+    <h1>${post.topic}</h1>
+    <h2>${post.title}</h2>
     <p>
         ${post.description}
     </p>
