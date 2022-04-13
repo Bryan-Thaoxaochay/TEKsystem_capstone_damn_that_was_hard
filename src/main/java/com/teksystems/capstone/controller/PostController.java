@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,7 @@ public class PostController {
     @Autowired
     private UserDAO userDAO;
 
+    // Getting Post(s) and Comments
     @GetMapping("/posts")
     public ModelAndView getAllPosts() {
         ModelAndView response = new ModelAndView();
@@ -71,7 +73,7 @@ public class PostController {
         return response;
     }
 
-    // Mapping post form and creating a new post
+    // Creating Post
     @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         ModelAndView response = new ModelAndView();
@@ -95,7 +97,7 @@ public class PostController {
         return response;
     }
 
-    // Mapping post form and editing a post
+    // Editing Post
     @GetMapping("/posts/post/{postId}/edit")
     public ModelAndView displayEditPostPage(@PathVariable("postId") Integer postId) {
         ModelAndView response = new ModelAndView();
@@ -121,6 +123,18 @@ public class PostController {
         postDAO.save(post);
 
         response.setViewName("redirect:/posts/post/" + postId);
+        return response;
+    }
+
+    // Deleting Post
+    @PostMapping("/posts/post/{postId}/delete")
+    public ModelAndView deletePost(@PathVariable("postId") Integer postId) {
+        ModelAndView response = new ModelAndView();
+
+        Post post = postDAO.findById(postId);
+        postDAO.delete(post);
+
+        response.setViewName("redirect:/posts");
         return response;
     }
 }
