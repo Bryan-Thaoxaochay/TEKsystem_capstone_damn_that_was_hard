@@ -27,8 +27,9 @@
     </c:when>
     <c:otherwise>
     <h2>Create a Post</h2>
-    <form action="/posts/create" id="createPostForm" method="post">
+    <form action="/posts/create/${user.userId}" id="createPostForm" method="post">
         <fieldset>
+            <input type="hidden" name="userId" value="${user.userId}">
             <label for="createPostForm">Topic <input type="text" name="topic" class="topic" placeholder="Enter a topic"></label>
             <label for="createPostForm">Title <input type="text" name="title" class="title" placeholder="Enter a title"></label>
             <label for="createPostForm">Description <input type="text" name="description" class="description" placeholder="Feel free to tell your story here"></label>

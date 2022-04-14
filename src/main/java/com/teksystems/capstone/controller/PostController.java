@@ -77,19 +77,26 @@ public class PostController {
     @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         ModelAndView response = new ModelAndView();
-        response.setViewName("post/create_post");
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+
+        User user = userDAO.findByEmail(userEmail);
+
+        response.addObject("user", user);
+        response.setViewName("post/create_post");
         return response;
     }
 
-    @PostMapping("/posts/create")
-    public ModelAndView createPost(PostBean form) {
+    @PostMapping("/posts/create/{userId}")
+    public ModelAndView createPost(@PathVariable("userId") Integer userId, PostBean form) {
         ModelAndView response = new ModelAndView();
 
         Post post = new Post();
         post.setTopic(form.getTopic());
         post.setTitle(form.getTitle());
         post.setDescription(form.getDescription());
+        post.setUserId(userId);
 
         postDAO.save(post);
 
