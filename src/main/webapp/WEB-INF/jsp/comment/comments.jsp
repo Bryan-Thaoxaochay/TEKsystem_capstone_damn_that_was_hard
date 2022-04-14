@@ -2,7 +2,7 @@
 <c:forEach items="${comments}" var="comment">
     <tr>
         <td>
-            <p>${comment.comment}</p>
+            <p data-id="${comment.id}" data-postId="${comment.blogpostId}" data-userId="${comment.userId}">${comment.comment}</p>
         </td>
         <c:if test="${comment.userId == user.userId}">
             <td>

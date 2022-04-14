@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
+
 @Controller
 public class CommentController {
     @Autowired
@@ -36,6 +38,24 @@ public class CommentController {
         comment.setComment(form.getComment());
         comment.setBlogpostId(postId);
         comment.setUserId(user.getUserId());
+
+        commentDAO.save(comment);
+
+        response.setViewName("redirect:/posts/post/" + postId);
+        return response;
+    }
+
+    // Editing a comment
+    @PostMapping("/comment/edit/{commentId}/{postId}/{userId}")
+    public ModelAndView editComment(@PathVariable("commentId") Integer commentId, @PathVariable("postId") Integer postId, @PathVariable("userId") Integer userId, CommentBean form) {
+        ModelAndView response = new ModelAndView();
+
+        Comment comment = commentDAO.findById(commentId);
+        comment.setId(commentId);
+        comment.setComment(form.getComment());
+        comment.setBlogpostId(postId);
+        comment.setUserId(userId);
+        comment.setUpdateDate(new Date());
 
         commentDAO.save(comment);
 

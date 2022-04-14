@@ -21,7 +21,11 @@ function showEditCommentForm(button) {
     formEl.appendChild(buttonEl);
     labelEl.appendChild(inputEl);
 
-    formEl.setAttribute("action", "/comment/edit/");
+    let commentId = pEl.getAttribute("data-id");
+    let postId = pEl.getAttribute("data-postId");
+    let userId = pEl.getAttribute("data-userId");
+
+    formEl.setAttribute("action", `/comment/edit/${commentId}/${postId}/${userId}`);
     formEl.setAttribute("method", "post");
     formEl.setAttribute("id", "editCommentForm");
     labelEl.setAttribute("for", "editCommentForm");
