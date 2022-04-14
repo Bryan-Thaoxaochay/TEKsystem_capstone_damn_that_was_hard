@@ -100,7 +100,7 @@ public class PostController {
 
         postDAO.save(post);
 
-        response.setViewName("post/posts");
+        response.setViewName("redirect:/posts/my_posts");
         return response;
     }
 
