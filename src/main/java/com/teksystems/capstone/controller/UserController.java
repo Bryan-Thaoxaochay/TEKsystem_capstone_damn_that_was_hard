@@ -34,7 +34,7 @@ public class UserController {
         return response;
     }
 
-    @PostMapping("/user/sign_up/submit")
+    @PostMapping("/user/create")
     public ModelAndView createUser(SignUpBean form) {
         ModelAndView response = new ModelAndView();
 

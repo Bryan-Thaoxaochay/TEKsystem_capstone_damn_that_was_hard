@@ -14,17 +14,17 @@ public class CommentController {
     @Autowired
     private CommentDAO commentDAO;
 
-    @PostMapping("posts/post/{id}/create_comment")
-    public ModelAndView createComment(@PathVariable("id") Integer id, CommentBean form) {
+    @PostMapping("/comment/create/{postId}")
+    public ModelAndView createComment(@PathVariable("postId") Integer postId, CommentBean form) {
         ModelAndView response = new ModelAndView();
 
         Comment comment = new Comment();
         comment.setComment(form.getComment());
-        comment.setBlogpostId(id);
+        comment.setBlogpostId(postId);
 
         commentDAO.save(comment);
 
-        response.setViewName("redirect:/posts/post/" + id);
+        response.setViewName("redirect:/posts/post/" + postId);
         return response;
     }
 }

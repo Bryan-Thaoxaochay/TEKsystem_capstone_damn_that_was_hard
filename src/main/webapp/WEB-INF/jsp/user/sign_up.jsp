@@ -11,7 +11,7 @@
 <jsp:include page="../include/nav.jsp" />
 
 <main>
-    <form action="/user/sign_up/submit" method="post" name="signUpForm" id="signUpForm">
+    <form action="/user/create" method="post" name="signUpForm" id="signUpForm">
         <h2>Create an Account</h2>
         <fieldset>
             <legend>Fill in the info below</legend>

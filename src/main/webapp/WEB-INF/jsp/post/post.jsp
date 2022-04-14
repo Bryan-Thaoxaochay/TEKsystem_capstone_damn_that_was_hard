@@ -14,8 +14,8 @@
 
 <main>
     <sec:authorize access="isAuthenticated()">
-        <a href="/posts/post/${post.id}/edit">Edit Post</a>
-        <form action="/posts/post/${post.id}/delete" method="post">
+        <a href="/posts/post/edit/${post.id}">Edit Post</a>
+        <form action="/posts/delete/${post.id}" method="post">
             <input type="hidden" name="id" value="${post.id}"></label>
             <button type="submit">Delete Post</button>
         </form>

@@ -59,15 +59,15 @@ public class PostController {
         return response;
     }
 
-    @GetMapping("/posts/post/{id}")
-    public ModelAndView getPostAndComments(@PathVariable("id") Integer id) throws Exception {
+    @GetMapping("/posts/post/{postId}")
+    public ModelAndView getPostAndComments(@PathVariable("postId") Integer postId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/post");
 
-        Post post = postDAO.findById(id);
+        Post post = postDAO.findById(postId);
         response.addObject("post", post);
 
-        List<Comment> comments = commentDAO.getAllByBlogpostId(id);
+        List<Comment> comments = commentDAO.getAllByBlogpostId(postId);
         response.addObject("comments", comments);
 
         return response;
@@ -82,7 +82,7 @@ public class PostController {
         return response;
     }
 
-    @PostMapping("/posts/new_post")
+    @PostMapping("/posts/create")
     public ModelAndView createPost(PostBean form) {
         ModelAndView response = new ModelAndView();
 
@@ -98,7 +98,7 @@ public class PostController {
     }
 
     // Editing Post
-    @GetMapping("/posts/post/{postId}/edit")
+    @GetMapping("/posts/post/edit/{postId}")
     public ModelAndView displayEditPostPage(@PathVariable("postId") Integer postId) {
         ModelAndView response = new ModelAndView();
         response.setViewName("post/create_post");
@@ -109,7 +109,7 @@ public class PostController {
         return response;
     }
 
-    @PostMapping("/post/{postId}/edit")
+    @PostMapping("/post/edit/{postId}")
     public ModelAndView editPost(@PathVariable("postId") Integer postId, PostBean form) {
         ModelAndView response = new ModelAndView();
 
@@ -127,7 +127,7 @@ public class PostController {
     }
 
     // Deleting Post
-    @PostMapping("/posts/post/{postId}/delete")
+    @PostMapping("/posts/delete/{postId}")
     public ModelAndView deletePost(@PathVariable("postId") Integer postId) {
         ModelAndView response = new ModelAndView();
 

@@ -14,7 +14,7 @@
     <c:choose>
     <c:when test = "${not empty post}">
         <h2>Edit Post</h2>
-        <form action="/post/${post.id}/edit" id="editPostForm" method="post">
+        <form action="/posts/edit/${post.id}" id="editPostForm" method="post">
             <fieldset>
                 <input type="hidden" name="id" value="${post.id}">
                 <input type="hidden" name="userId" value="${post.userId}">
@@ -27,7 +27,7 @@
     </c:when>
     <c:otherwise>
     <h2>Create a Post</h2>
-    <form action="/post/new_post" id="createPostForm" method="post">
+    <form action="/posts/create" id="createPostForm" method="post">
         <fieldset>
             <label for="createPostForm">Topic <input type="text" name="topic" class="topic" placeholder="Enter a topic"></label>
             <label for="createPostForm">Title <input type="text" name="title" class="title" placeholder="Enter a title"></label>
