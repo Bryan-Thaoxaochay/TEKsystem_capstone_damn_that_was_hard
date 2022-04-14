@@ -22,6 +22,9 @@ public class Comment {
     @Column(name = "blogpost_id")
     private Integer blogpostId;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate = new Date();
