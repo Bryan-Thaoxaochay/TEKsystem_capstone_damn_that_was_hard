@@ -2,10 +2,10 @@
 <c:forEach items="${comments}" var="comment">
     <tr>
         <td>
-                ${comment.comment}
+            <p>${comment.comment}</p>
         </td>
         <c:if test="${comment.userId == user.userId}">
-            <td id="editCommentTd-${comment.id}">
+            <td>
                 <button type="button" class="editCommentBtn">edit comment</button>
             </td>
             <td>

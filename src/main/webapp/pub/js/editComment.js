@@ -1,24 +1,36 @@
+let editCommentBtns = document.getElementsByClassName("editCommentBtn");
 document.addEventListener("click", function (e) {
-    showEditCommentForm(e.target);
+    if (editCommentBtns[0] === e.target) {
+        showEditCommentForm(e.target);
+    }
 })
 
 function showEditCommentForm(button) {
     let editBtn = button;
     let editBtnTd = editBtn.parentElement;
     let commentTd = editBtnTd.previousElementSibling;
+    let pEl = commentTd.firstElementChild;
 
-    let tdEl = document.createElement("td");
     let formEl = document.createElement("form");
     let labelEl = document.createElement("label");
     let inputEl = document.createElement("input");
     let buttonEl = document.createElement("button");
 
-    commentTd.appendChild(tdEl);
-    tdEl.appendChild(formEl);
+    commentTd.appendChild(formEl);
     formEl.appendChild(labelEl);
     formEl.appendChild(buttonEl);
     labelEl.appendChild(inputEl);
 
+    formEl.setAttribute("action", "/comment/edit/");
+    formEl.setAttribute("method", "post");
+    formEl.setAttribute("id", "editCommentForm");
+    labelEl.setAttribute("for", "editCommentForm");
+    inputEl.setAttribute("type", "text");
+    inputEl.setAttribute("name", "comment");
+    inputEl.setAttribute("value", pEl.innerText);
+    buttonEl.setAttribute("type", "submit");
+
+    buttonEl.innerHTML = "Save";
 }
 
 // <form action="/comment/create/${post.id}" method="post" id="commentForm">
