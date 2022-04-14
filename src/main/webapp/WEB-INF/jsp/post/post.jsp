@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav_footer.css">
+    <script src="../../../pub/js/editComment.js" defer ></script>
 </head>
 <body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
