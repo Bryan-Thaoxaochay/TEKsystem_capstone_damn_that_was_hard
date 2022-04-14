@@ -70,6 +70,12 @@ public class PostController {
         List<Comment> comments = commentDAO.getAllByBlogpostId(postId);
         response.addObject("comments", comments);
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+
+        User user = userDAO.findByEmail(userEmail);
+        response.addObject("user", user);
+
         return response;
     }
 
