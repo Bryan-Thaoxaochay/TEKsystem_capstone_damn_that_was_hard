@@ -19,6 +19,9 @@
                 <a href="/posts/my_posts">My Posts</a>
             </li>
             <li>
+                <a href="/posts/saved_posts">Saved Posts</a>
+            </li>
+            <li>
                 <a href="/user/logout">Sign Out</a>
             </li>
         </sec:authorize>
