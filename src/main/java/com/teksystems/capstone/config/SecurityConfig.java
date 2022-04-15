@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/user/sign_in")
                     .loginProcessingUrl("/user/sign_in/submit")
                     .defaultSuccessUrl("/home/index", true)
+                    .failureUrl("/user/sign_in?error=true")
                     .and()
                 .logout()
                     .invalidateHttpSession(true)
