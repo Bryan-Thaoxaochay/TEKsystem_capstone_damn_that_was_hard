@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
 </head>
 <body>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="../include/nav.jsp" />
-
 <main id="recentPosts">
     <h2>Recent Stories</h2>
     <c:forEach items="${posts}" var="post">
@@ -18,10 +18,12 @@
             <h3>${post.topic}</h3>
             <h4>${post.title}</h4>
             <a href="/posts/post/${post.id}">Read Story</a>
-            <form action="/posts/saved_posts/${post.id}" method="post">
-                <input type="hidden" name="postId" value="${post.id}">
-                <button type="submit">Remove Saved Story</button>
-            </form>
+            <sec:authorize access="isAuthenticated()">
+                <form action="/posts/saved_posts/${post.id}" method="post">
+                    <input type="hidden" name="postId" value="${post.id}">
+                    <button type="submit">Remove Saved Story</button>
+                </form>
+            </sec:authorize>
         </section>
     </c:forEach>
 </main>
