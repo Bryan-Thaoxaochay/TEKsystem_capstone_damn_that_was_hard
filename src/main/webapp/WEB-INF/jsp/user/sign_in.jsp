@@ -5,7 +5,7 @@
     <title>Damn That Was Hard</title>
 
     <link rel="stylesheet" type="text/css" href="../../../pub/css/sign-in.css">
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav_footer.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />

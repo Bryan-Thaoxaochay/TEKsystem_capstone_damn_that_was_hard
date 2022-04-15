@@ -5,7 +5,7 @@
     <title>Damn That Was Hard</title>
 
     <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav_footer.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
     <script src="../../../pub/js/editComment.js" defer ></script>
 </head>
 <body>
