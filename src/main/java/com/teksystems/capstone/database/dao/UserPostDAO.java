@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface UserPostDAO extends JpaRepository<UserPost, Long> {
     List<UserPost> getAllByUserId(@Param("userId") Integer userId);
+    UserPost findUserPostByUserIdAndPostId(@Param("userId") Integer userId, @Param("postId") Integer postId);
 }

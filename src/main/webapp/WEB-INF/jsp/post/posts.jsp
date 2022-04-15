@@ -18,6 +18,10 @@
             <h3>${post.topic}</h3>
             <h4>${post.title}</h4>
             <a href="/posts/post/${post.id}">Read Story</a>
+            <form action="/posts/saved_posts/${post.id}" method="post">
+                <input type="hidden" name="postId" value="${post.id}">
+                <button type="submit">Remove Saved Story</button>
+            </form>
         </section>
     </c:forEach>
 </main>

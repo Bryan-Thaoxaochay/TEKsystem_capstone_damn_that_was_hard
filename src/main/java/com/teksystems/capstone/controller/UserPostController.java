@@ -70,4 +70,21 @@ public class UserPostController {
         response.setViewName("redirect:/posts/saved_posts");
         return response;
     }
+
+    // Removing a post
+    @PostMapping("/posts/saved_posts/{id}")
+    public ModelAndView removePost(@RequestParam("postId") Integer postId) {
+        ModelAndView response = new ModelAndView();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userEmail = authentication.getName();
+        User user = userDAO.findByEmail(userEmail);
+
+        UserPost userPost = userPostDAO.findUserPostByUserIdAndPostId(user.getUserId(), postId);
+
+        userPostDAO.delete(userPost);
+
+        response.setViewName("redirect:/posts/saved_posts");
+        return response;
+    }
 }
