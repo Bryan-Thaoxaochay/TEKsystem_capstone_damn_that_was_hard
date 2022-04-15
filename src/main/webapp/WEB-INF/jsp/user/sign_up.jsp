@@ -1,31 +1,65 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Damn That Was Hard</title>
+    <title>Sign Up</title>
 
     <link rel="stylesheet" type="text/css" href="../../../pub/css/sign-up.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
-
 <main>
     <form action="/user/create" method="post" name="signUpForm" id="signUpForm">
         <h2>Create an Account</h2>
         <fieldset>
             <legend>Fill in the info below</legend>
-            <label for="signUpForm" id="firstNameLabel">First Name: <input type="text" name="firstName" id="firstName" placeholder="Enter your first name"></label>
+            <label for="signUpForm" id="firstNameLabel">First Name: <input type="text" name="firstName" value="${form.firstName}"></label>
+            <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">
+                <div style="color: red">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
 
-            <label for="signUpForm" id="lastNameLabel">Last Name: <input type="text" name="lastName" id="lastName" placeholder="Enter your last name"></label>
+            <label for="signUpForm" id="lastNameLabel">Last Name: <input type="text" name="lastName" value="${form.lastName}"></label>
+            <c:forEach items="${bindingResult.getFieldErrors('lastName')}" var="error">
+                <div style="color: red">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
 
-            <label for="signUpForm" id="emailLabel">Email: <input type="text" name="email" id="email" placeholder="Enter your email"></label>
+            <label for="signUpForm" id="emailLabel">Email: <input type="text" name="email" value="${form.email}"></label>
+            <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
+                <div style="color: red">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
 
-            <label for="signUpForm" id="passwordLabel">Password: <input type="text" name="password" id="password" placeholder="Enter your password"></label>
+            <label for="signUpForm" id="passwordLabel">Password: <input type="password" name="password" value="${form.password}"></label>
+            <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
+                <div style="color: red">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
 
-            <label for="signUpForm" id="confirmPasswordLabel">Confirm Password: <input type="text" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password"></label>
+            <label for="signUpForm" id="confirmPasswordLabel">Confirm Password: <input type="password" name="confirmPassword" value="${form.confirmPassword}"></label>
+            <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">
+                <div style="color: red">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+            <div style="color: red">
+                ${passwordMessage}
+            </div>
 
-            <label for="signUpForm" id="usernameLabel">Username: <input type="text" name="username" id="username" placeholder="Enter your username"></label>
+            <label for="signUpForm" id="usernameLabel">Username: <input type="text" name="username" value="${form.username}"></label>
+            <p>Your username is how you will be displayed on this site.</p>
+            <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">
+                <div style="color: red">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
 
             <button type="submit">Sign Up</button>
         </fieldset>
@@ -33,7 +67,7 @@
 </main>
 
 <section>
-    <p>If you already have an account: <a href="/user/sign_in">sign in</a></p>
+    <p>If you have an account: <a href="/user/sign_in">Sign In</a></p>
 </section>
 </body>
 </html>

@@ -6,9 +6,11 @@ import com.teksystems.capstone.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -20,23 +22,24 @@ public class UserController {
 
     @GetMapping("/user/sign_up")
     public ModelAndView displaySignUpPage() throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/sign_up");
-
-        return response;
+        return new ModelAndView("user/sign_up");
     }
 
     @GetMapping("/user/sign_in")
     public ModelAndView displaySignInPage() throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("user/sign_in");
-
-        return response;
+        return new ModelAndView("user/sign_in");
     }
 
     @PostMapping("/user/create")
-    public ModelAndView createUser(SignUpBean form) {
-        ModelAndView response = new ModelAndView();
+    public ModelAndView createUser(@Valid SignUpBean form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("user/sign_up").addObject("bindingResult", bindingResult).addObject("form", form);
+        }
+
+        if (form.getPassword() != form.getConfirmPassword()) {
+            String passwordMessage = "This doesn't match the password above.";
+            return new ModelAndView("user/sign_up").addObject("passwordMessage", passwordMessage);
+        }
 
         User user = new User();
         user.setFirstName(form.getFirstName());
@@ -44,10 +47,8 @@ public class UserController {
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
-
         userDAO.save(user);
 
-        response.setViewName("home/index");
-        return response;
+        return new ModelAndView("redirect:/home/index");
     }
 }
