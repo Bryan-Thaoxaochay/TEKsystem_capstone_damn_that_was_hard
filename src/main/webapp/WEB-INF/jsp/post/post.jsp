@@ -21,6 +21,10 @@
             <button type="submit">Delete Post</button>
         </form>
     </sec:authorize>
+    <form action="/posts/save" method="post">
+        <input type="hidden" name="id" value="${post.id}">
+        <button type="submit">Save Post</button>
+    </form>
     <h1>${post.topic}</h1>
     <h2>${post.title}</h2>
     <p>
