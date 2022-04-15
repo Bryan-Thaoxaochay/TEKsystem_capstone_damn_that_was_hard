@@ -21,14 +21,10 @@ public class UserController {
     private PasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/user/sign_up")
-    public ModelAndView displaySignUpPage() throws Exception {
-        return new ModelAndView("user/sign_up");
-    }
+    public ModelAndView displaySignUpPage() throws Exception { return new ModelAndView("user/sign_up"); }
 
     @GetMapping("/user/sign_in")
-    public ModelAndView displaySignInPage() throws Exception {
-        return new ModelAndView("user/sign_in");
-    }
+    public ModelAndView displaySignInPage() throws Exception { return new ModelAndView("user/sign_in"); }
 
     @PostMapping("/user/create")
     public ModelAndView createUser(@Valid SignUpBean form, BindingResult bindingResult) {
