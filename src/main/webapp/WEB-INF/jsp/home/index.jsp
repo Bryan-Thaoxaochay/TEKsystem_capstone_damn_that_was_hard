@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Damn That Was Hard</title>
-
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/index.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/index.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
@@ -18,8 +17,9 @@
         <blockquote>If you're going through hell, keep going.</blockquote>
         <p><em>~ Winston Churchill</em></p>
     </section>
-    <img src="https://images.pexels.com/photos/1435075/pexels-photo-1435075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="foggy mountain">
-    <img src="https://images.pexels.com/photos/1484530/pexels-photo-1484530.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="bottomSection" alt="sunrise">
+<%--    <img src="https://images.pexels.com/photos/1435075/pexels-photo-1435075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="foggy mountain">--%>
+    <img src="../../../pub/images/boat_sunset.webp" alt="boat sunset">
+    <img src="../../../pub/images/mountain%20sunrise.jpeg" class="bottomSection" alt="mountain sunrise">
     <section class="bottomSection">
         <sec:authorize access="!isAuthenticated()">
             <p>If you'd like to share or comment on a post, consider creating an account.</p>

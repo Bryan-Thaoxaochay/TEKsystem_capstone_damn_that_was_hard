@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Damn That Was Hard</title>
-
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
+    <title>${post.title}</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
     <script src="../../../pub/js/editComment.js" defer ></script>
 </head>
 <body>

@@ -4,9 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Sign Up</title>
-
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/sign-up.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/sign-up.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />

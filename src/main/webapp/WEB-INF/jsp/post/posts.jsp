@@ -4,10 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Damn That Was Hard</title>
-
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
+    <title>Stories</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
