@@ -1,17 +1,60 @@
+body {
+    background-color: black;
+}
+
+#backgroundDiv {
+    align-items: center;
+    background-image: radial-gradient(circle, yellow, orange, black);
+    display: flex;
+    height: 87vh;
+    justify-content: center;
+    width: 98vw;
+}
+
+main {
+    align-items: center;
+    background-color: white;
+    border-radius: 5%;
+    box-shadow: 10px 10px 10px black;
+    display: flex;
+    flex-direction: column;
+    height: 55vh;
+}
+
+form {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
 label {
     display: block;
     margin: 1rem;
 }
 
-button {
-    margin: 1rem;
+#signInErrorMsg {
+    color: red;
 }
 
-section p {
+button {
+    background-color: orange;
+    border: 1px solid black;
+    border-radius: 5%;
+    color: black;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+button:hover {
+    background-color: lightsalmon;
+}
+
+form ~ p {
     margin: 2rem;
 }
 
-section p a {
+p > a {
     color: blue;
     text-decoration: none;
 }
