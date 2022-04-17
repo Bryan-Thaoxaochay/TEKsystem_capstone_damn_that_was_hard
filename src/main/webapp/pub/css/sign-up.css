@@ -1,17 +1,81 @@
+body {
+    background-color: black;
+}
+
+#signUpBackgroundDiv {
+    align-items: center;
+    background-image: radial-gradient(circle, yellow, orange, black);
+    display: flex;
+    height: 87vh;
+    justify-content: center;
+    width: 98vw;
+}
+
+main {
+    align-items: center;
+    background-color: white;
+    border-radius: 5%;
+    box-shadow: 10px 10px 10px black;
+    display: flex;
+    flex-direction: column;
+    height: 83vh;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+main + p {
+    margin-bottom: 0;
+}
+
+form {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0rem 1rem;
+}
+
 label {
     display: block;
-    margin: 1rem;
+    margin: 0.5rem;
+}
+
+.signUpErrMsg {
+    color: red;
+    margin: 0;
+}
+
+#confirmPasswordErrMsg {
+    color: red;
+    margin: 0;
+}
+
+label + p {
+    font-size: x-small;
+    margin-top: 0;
 }
 
 button {
-    margin: 1rem;
+    background-color: orange;
+    border: 1px solid black;
+    border-radius: 5%;
+    color: black;
+    margin: 0;
+    padding: 0.5rem 1rem;
 }
 
-section p {
-    margin: 2rem;
+button:hover {
+    background-color: lightsalmon;
 }
 
-section p a {
+form + p {
+    margin: 1rem 1rem 0;
+}
+
+p > a {
     color: blue;
     text-decoration: none;
 }
