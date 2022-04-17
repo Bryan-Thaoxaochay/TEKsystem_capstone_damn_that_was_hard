@@ -16,7 +16,7 @@
         <section>
             <h3>${post.topic}</h3>
             <h4>${post.title}</h4>
-            <a href="/posts/post/${post.id}">Read Story</a>
+            <a href="/posts/post/${post.id}">Read</a>
             <sec:authorize access="isAuthenticated()">
                 <form action="/posts/saved_posts/${post.id}" method="post">
                     <input type="hidden" name="postId" value="${post.id}">

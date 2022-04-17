@@ -1,4 +1,9 @@
+body {
+    background-image: url("https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
 h2 {
+    color: white;
     text-align: center;
 }
 
@@ -12,16 +17,29 @@ main {
 
 section {
     align-items: center;
-    background-color: white;
+    background-color: gray;
     border-radius: 5%;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 1rem;
+    margin: 0.5rem 0;
+    opacity: 0.75;
     padding: 1rem;
 }
 
+section > h3, section > h4 {
+    margin: 0;
+    text-align: center;
+}
+
+section > h4 {
+    margin-bottom: 1rem;
+}
+
 section > a {
+    background-color: orange;
     color: gray;
+    padding: 0.5rem 1rem;
     text-decoration: none;
 }
