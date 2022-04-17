@@ -10,8 +10,8 @@
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
+<h2>Stories</h2>
 <main id="recentPosts">
-    <h2>Recent Stories</h2>
     <c:forEach items="${posts}" var="post">
         <section>
             <h3>${post.topic}</h3>
