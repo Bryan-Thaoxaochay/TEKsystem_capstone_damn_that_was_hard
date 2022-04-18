@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/post.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/comments.css">
-<%--    <script src="../../../pub/js/editComment.js" defer ></script>--%>
+    <script src="../../../pub/js/editComment.js" defer ></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
