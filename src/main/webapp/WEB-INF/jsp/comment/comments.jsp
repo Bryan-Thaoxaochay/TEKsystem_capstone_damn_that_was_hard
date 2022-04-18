@@ -3,7 +3,7 @@
     <div id="commentDiv">
         <header>
             <section>
-                <h5>${currentUser.username}</h5>
+                <h5>${postUser.username}</h5>
                 <p><em>${comment.updateDate}</em></p>
             </section>
             <c:if test="${comment.userId == currentUser.userId}">
