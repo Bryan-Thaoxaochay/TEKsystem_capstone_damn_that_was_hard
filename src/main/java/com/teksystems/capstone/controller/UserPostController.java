@@ -48,7 +48,7 @@ public class UserPostController {
         }
 
         response.addObject("posts", savedPosts);
-        response.setViewName("post/posts");
+        response.setViewName("post/saved_posts");
         return response;
     }
 
