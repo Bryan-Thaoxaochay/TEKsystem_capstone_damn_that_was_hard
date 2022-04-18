@@ -20,7 +20,7 @@
             <a href="/posts/post/${post.id}">Read</a>
             <form action="/posts/saved_posts/${post.id}" method="post">
                 <input type="hidden" name="postId" value="${post.id}">
-                <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                <button type="submit"><i class="fas fa-trash-alt" title="Remove story"></i></button>
             </form>
         </section>
     </c:forEach>

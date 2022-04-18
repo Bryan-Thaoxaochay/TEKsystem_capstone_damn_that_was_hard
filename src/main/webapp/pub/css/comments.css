@@ -7,14 +7,13 @@ legend {
     color: white;
 }
 
-input {
+textarea {
     height: 3rem;
     width: 100%;
 }
 
 fieldset button {
     background-color: gray;
-    /*border: 1px solid black;*/
     border: none;
     color: white;
     font-size: 1rem;

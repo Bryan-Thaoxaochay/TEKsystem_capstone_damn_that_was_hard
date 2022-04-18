@@ -21,8 +21,8 @@
                 <input type="hidden" name="userId" value="${post.userId}">
                 <label for="editPostForm">Topic </label><input type="text" name="topic" class="topic" value="${post.topic}">
                 <label for="editPostForm">Title </label><input type="text" name="title" class="title" value="${post.title}">
-                <label for="editPostForm">Description </label><textarea type="text" name="description" class="description" value="${post.description}"></textarea>
-                <button type="submit">Edit Post</button>
+                <label for="editPostForm">Description </label><textarea type="text" name="description" class="description">${post.description}</textarea>
+                <button type="submit"><i class="fas fa-pen"></i> Save</button>
             </fieldset>
         </form>
     </c:when>

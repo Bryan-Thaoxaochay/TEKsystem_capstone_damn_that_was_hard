@@ -20,16 +20,16 @@
             <c:if test="${currentUser.userId != post.userId}">
                 <form action="/posts/save" method="post">
                     <input type="hidden" name="id" value="${post.id}">
-                    <button type="submit"><i class="far fa-bookmark"></i></button>
+                    <button type="submit"><i class="far fa-bookmark" title="Save story"></i></button>
                 </form>
             </c:if>
 
             <c:if test="${currentUser.userId == post.userId}">
                 <div>
-                    <a href="/posts/post/edit/${post.id}"><i class="fas fa-edit"></i></a>
+                    <a href="/posts/post/edit/${post.id}"><i class="fas fa-edit" title="Edit comment"></i></a>
                     <form action="/posts/delete/${post.id}" method="post">
                         <input type="hidden" name="id" value="${post.id}"></label>
-                        <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                        <button type="submit"><i class="fas fa-trash-alt" title="Delete comment"></i></button>
                     </form>
                 </div>
             </c:if>
