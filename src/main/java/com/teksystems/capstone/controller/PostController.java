@@ -93,7 +93,7 @@ public class PostController {
         return new ModelAndView("post/create_post").addObject("post", post);
     }
 
-    @PostMapping("/post/edit/{postId}")
+    @PostMapping("/posts/edit/{postId}")
     public ModelAndView editPost(@PathVariable("postId") Integer postId, PostBean form) {
         Post post = postDAO.findById(postId);
         post.setId(form.getId());
