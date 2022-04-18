@@ -3,9 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Damn That Was Hard</title>
-
+    <title>Write a Story</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/create_post.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
@@ -18,22 +19,22 @@
             <fieldset>
                 <input type="hidden" name="id" value="${post.id}">
                 <input type="hidden" name="userId" value="${post.userId}">
-                <label for="editPostForm">Topic <input type="text" name="topic" class="topic" value="${post.topic}"></label>
-                <label for="editPostForm">Title <input type="text" name="title" class="title" value="${post.title}"></label>
-                <label for="editPostForm">Description <input type="text" name="description" class="description" value="${post.description}"></label>
+                <label for="editPostForm">Topic </label><input type="text" name="topic" class="topic" value="${post.topic}">
+                <label for="editPostForm">Title </label><input type="text" name="title" class="title" value="${post.title}">
+                <label for="editPostForm">Description </label><textarea type="text" name="description" class="description" value="${post.description}"></textarea>
                 <button type="submit">Edit Post</button>
             </fieldset>
         </form>
     </c:when>
     <c:otherwise>
-    <h2>Create a Post</h2>
+    <h2>Write a Post</h2>
     <form action="/posts/create/${user.userId}" id="createPostForm" method="post">
         <fieldset>
             <input type="hidden" name="userId" value="${user.userId}">
-            <label for="createPostForm">Topic <input type="text" name="topic" class="topic" placeholder="Enter a topic"></label>
-            <label for="createPostForm">Title <input type="text" name="title" class="title" placeholder="Enter a title"></label>
-            <label for="createPostForm">Description <input type="text" name="description" class="description" placeholder="Feel free to tell your story here"></label>
-            <button type="submit">Create Post</button>
+            <label for="createPostForm">Topic</label><input type="text" name="topic" class="topic">
+            <label for="createPostForm">Title</label><input type="text" name="title" class="title">
+            <label for="createPostForm">Story</label><textarea type="text" name="description" class="description" placeholder="Feel free to tell your story here..."></textarea>
+            <button type="submit"><i class="fas fa-pen"></i> Publish</button>
         </fieldset>
     </form>
     </c:otherwise>

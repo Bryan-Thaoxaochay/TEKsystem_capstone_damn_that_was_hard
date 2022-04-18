@@ -1,0 +1,55 @@
+body {
+    background-image: linear-gradient(to bottom right, black, orange);
+}
+
+main {
+    background-color: gray;
+    border-radius: 2%;
+    margin: 0 5rem;
+    opacity: 0.90;
+}
+
+main > h2 {
+    margin: 2rem;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+main > form {
+    height: 78rem;
+    margin: 0 2rem;
+}
+
+main fieldset {
+    border-radius: 2%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 75rem;
+}
+
+main label {
+    margin: 1rem;
+}
+
+.description {
+    border-radius: 2%;
+    height: 70rem;
+    padding: 0.5rem;
+}
+
+main button {
+    background-color: darkblue;
+    border: none;
+    border-radius: 10%;
+    color: orange;
+    margin: 0.5rem 0.5rem 0.5rem auto;
+    padding: 0.5rem;
+    text-align: center;
+    width: 5rem;
+}
+
+main button:hover {
+    color: yellow;
+}
