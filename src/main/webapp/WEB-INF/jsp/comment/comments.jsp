@@ -8,10 +8,10 @@
             </section>
             <c:if test="${comment.userId == currentUser.userId}">
                 <div id="editDeleteDiv">
-                    <button type="button" class="editCommentBtn"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="editCommentBtn" title="Edit comment"><i class="fas fa-edit"></i></button>
                     <form action="/comment/delete/${comment.id}" method="post">
                         <input type="hidden" name="id" value="${post.id}">
-                        <button><i class="fas fa-trash-alt"></i></button>
+                        <button title="Delete comment"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </div>
             </c:if>
