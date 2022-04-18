@@ -54,12 +54,13 @@ public class PostController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(userEmail);
+
+        User postUser = userDAO.findByUserId(post.getUserId());
 
         return new ModelAndView("post/post")
-                .addObject("post", post)
-                .addObject("comments", comments)
-                .addObject("user", user);
+                .addObject("post", post).addObject("comments", comments)
+                .addObject("currentUser", currentUser).addObject("postUser", postUser);
     }
 
     // Creating Post
