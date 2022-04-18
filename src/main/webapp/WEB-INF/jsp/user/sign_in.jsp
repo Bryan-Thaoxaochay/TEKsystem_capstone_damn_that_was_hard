@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Sign In</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/sign-in.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/sign_in.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
