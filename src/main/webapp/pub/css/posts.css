@@ -23,9 +23,9 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 0.5rem 0;
+    margin: 0.5rem;
     opacity: 0.75;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 section > h3, section > h4 {
@@ -39,7 +39,7 @@ section > h4 {
 
 section > a {
     background-color: orange;
-    color: gray;
+    color: black;
     padding: 0.5rem 1rem;
     text-decoration: none;
 }
