@@ -1,0 +1,52 @@
+body {
+    background-image: linear-gradient(to bottom right, black, orange);
+}
+
+main {
+    background-color: gray;
+    border-radius: 2%;
+    margin: 2rem 5rem;
+    opacity: 0.75;
+    padding: 5rem;
+}
+
+header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+header > h1 {
+    display: inline-block;
+}
+
+header > div {
+    display: flex;
+    flex-direction: row;
+}
+
+div > a {
+    color: black;
+    font-size: 1.5rem;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+div > form > button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+div > form > button:hover, div > a:hover {
+    color: orange;
+}
+
+main > section {
+    color: white;
+}
+
+section > h2 {
+    font-size: xxx-large;
+}
