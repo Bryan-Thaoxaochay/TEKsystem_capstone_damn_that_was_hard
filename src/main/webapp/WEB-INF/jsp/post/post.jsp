@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>${post.title}</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/posts.css">
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/post.css">
     <script src="../../../pub/js/editComment.js" defer ></script>
 </head>
 <body>
