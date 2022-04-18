@@ -1,0 +1,64 @@
+/* Create Form Section */
+
+
+/* Comment Section */
+aside {
+    background-color: #314455;
+    border: 0.5rem solid #314455;
+    border-radius: 2%;
+    margin: 0 5rem;
+    opacity: 0.9;
+}
+
+#commentDiv {
+    background-color: gray;
+    border-radius: 5%;
+    color: white;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+/* Comment Info */
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header > section {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+header > section > h5 {
+    color: #314455;
+    font-size: large;
+    margin: 0 0.5rem 0 0;
+}
+
+header > section > p {
+    font-size: small;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#editDeleteDiv > button {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+}
+
+#editDeleteDiv > button:hover {
+    color: orange;
+}
+
+#editDeleteDiv > form > button {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+}
+
+/* Comment */
+#commentDiv > p {
+    font-size: large;
+}

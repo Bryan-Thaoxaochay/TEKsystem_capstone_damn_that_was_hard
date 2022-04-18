@@ -7,7 +7,8 @@
     <title>${post.title}</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/post.css">
-    <script src="../../../pub/js/editComment.js" defer ></script>
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/comments.css">
+<%--    <script src="../../../pub/js/editComment.js" defer ></script>--%>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
@@ -43,14 +44,11 @@
     </section>
 </main>
 
-<sec:authorize access="isAuthenticated()">
-    <section>
+<aside>
+    <sec:authorize access="isAuthenticated()">
         <jsp:include page="../comment/create_comment.jsp" />
-    </section>
-</sec:authorize>
-
-<table>
+    </sec:authorize>
     <jsp:include page="../comment/comments.jsp" />
-</table>
+</aside>
 </body>
 </html>
