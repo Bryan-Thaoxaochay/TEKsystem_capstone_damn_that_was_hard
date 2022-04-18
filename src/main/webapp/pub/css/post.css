@@ -6,7 +6,7 @@ main {
     background-color: gray;
     border-radius: 2%;
     margin: 2rem 5rem;
-    opacity: 0.75;
+    opacity: 0.78;
     padding: 5rem;
 }
 
@@ -18,6 +18,16 @@ header {
 
 header > h1 {
     display: inline-block;
+}
+
+header > form > button {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+header > form > button:hover {
+    color: orange;
 }
 
 header > div {

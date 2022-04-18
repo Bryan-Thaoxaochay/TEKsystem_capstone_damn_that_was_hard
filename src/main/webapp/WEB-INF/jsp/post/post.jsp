@@ -19,7 +19,7 @@
             <c:if test="${currentUser.userId != post.userId}">
                 <form action="/posts/save" method="post">
                     <input type="hidden" name="id" value="${post.id}">
-                    <button type="submit">Save Post</button>
+                    <button type="submit"><i class="far fa-bookmark"></i></button>
                 </form>
             </c:if>
 
