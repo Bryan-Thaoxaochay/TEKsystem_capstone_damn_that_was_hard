@@ -1,48 +1,69 @@
 package com.teksystems.capstone.database.dao;
 
+import com.teksystems.capstone.database.entity.Post;
+import com.teksystems.capstone.database.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
+@Slf4j
 @DataJpaTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PostDAOTest {
     @Autowired
     private PostDAO postDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
+    @BeforeEach
+    public void createUserAndPost() throws ParseException {
+        User newUser = new User();
+        newUser.setFirstName("John");
+        newUser.setLastName("Doe");
+        newUser.setEmail("john_doe@example.com");
+        newUser.setPassword("12345678");
+        newUser.setUsername("JD");
+        userDAO.save(newUser);
+
+        User user = userDAO.findByEmail("john_doe@example.com");
+
+        for (int i = 1; i < 5; i++) {
+            String date = "31/12/199" + i;
+            Post newPost = new Post();
+            newPost.setUserId(user.getUserId());
+            newPost.setTopic("Career");
+            newPost.setTitle(i + ": I can't find a job!");
+            newPost.setDescription("Lorem ipsum dolor sit amet, consectetur " +
+                    "adipiscing elit, sed do eiusmod tempor incididunt ut ");
+            newPost.setCreateDate(new SimpleDateFormat("dd/MM/yyyy").parse(date));
+            postDAO.save(newPost);
+        }
+    }
+
     @Test
     @Order(1)
-    public void createPostTest() {
-
+    public void findPostById() {
+        Assertions.assertNotNull(postDAO.findById(1));
     }
 
     @Test
     @Order(2)
-    public void getPostTest() {
-
+    public void findPostsByUserId() {
+        Assertions.assertTrue(postDAO.findByUserId(2).size() > 0);
     }
 
     @Test
     @Order(3)
-    public void updatePostTest() {
-
-    }
-
-    @Test
-    @Order(4)
-    public void deletePostTest() {
-
+    public void getAllPostsOrderByCreateDate() {
+        List<Post> posts = postDAO.getAllPostsOrderByCreateDate();
+        Date laterDate = posts.get(0).getCreateDate();
+        Date beforeDate = posts.get(posts.size() - 1).getCreateDate();
+        Assertions.assertTrue(beforeDate.compareTo(laterDate) < 0);
     }
 }
-
-/*
-1. Add h2 db dependency to the pom.xml
-2. Create application.properties in resource folder in test folder
-3. Add these properties
-    hibernate.dialect=org.hibernate.dialect.H2Dialect
-    hibernate.hbm2ddl.auto=create
-4. Create test classes
-5. Add annotations
-    @DataJpaTest
-    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-*/
