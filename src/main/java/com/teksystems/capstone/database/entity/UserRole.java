@@ -19,5 +19,5 @@ public class UserRole {
     private Integer userId;
 
     @Column(name = "user_role")
-    private String userRole;
+    private String userRole = "USER";
 }

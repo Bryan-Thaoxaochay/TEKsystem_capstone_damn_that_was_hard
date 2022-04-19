@@ -3,7 +3,9 @@ package com.teksystems.capstone.controller;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.teksystems.capstone.bean.SignUpBean;
 import com.teksystems.capstone.database.dao.UserDAO;
+import com.teksystems.capstone.database.dao.UserRoleDAO;
 import com.teksystems.capstone.database.entity.User;
+import com.teksystems.capstone.database.entity.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import javax.validation.Valid;
 public class UserController {
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private UserRoleDAO userRoleDAO;
 
     @Autowired
     private PasswordEncoder bCryptPasswordEncoder;
@@ -42,7 +47,7 @@ public class UserController {
                     .addObject("bindingResult", bindingResult).addObject("form", form);
         }
 
-        if (form.getPassword() != form.getConfirmPassword()) {
+        if (!form.getPassword().equals(form.getConfirmPassword())) {
             return new ModelAndView("user/sign_up")
                     .addObject("passwordMessage", "This doesn't match the password above.");
         }
@@ -54,6 +59,11 @@ public class UserController {
         user.setEmail(form.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
         userDAO.save(user);
+
+        User createdUser = userDAO.findByUsername(form.getUsername());
+        UserRole userRole = new UserRole();
+        userRole.setUserId(createdUser.getUserId());
+        userRoleDAO.save(userRole);
 
         return new ModelAndView("redirect:/home/index");
     }
