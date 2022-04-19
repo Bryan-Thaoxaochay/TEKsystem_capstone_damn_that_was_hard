@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+<jsp:include page="../include/header.jsp" />
     <title>Sign In</title>
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/sign_in.css">
 </head>
 <body>
 <jsp:include page="../include/nav.jsp" />
+
 <div id="backgroundDiv">
     <main>
         <h2>Welcome Back</h2>
@@ -21,5 +18,5 @@
         <p>If you don't have an account: <a href="/user/sign_up">Create an Account</a></p>
     </main>
 </div>
-</body>
-</html>
+
+<jsp:include page="../include/footer.jsp" />

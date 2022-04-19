@@ -1,24 +1,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+
+<jsp:include page="../include/header.jsp" />
     <title>Write a Story</title>
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/create_post.css">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
+
 <body>
 <jsp:include page="../include/nav.jsp" />
 
 <main>
     <c:choose>
+    <%-- Editing a Post --%>
     <c:when test = "${not empty post}">
         <h2>Edit Post</h2>
         <form action="/posts/edit/${post.id}" id="editPostForm" method="post">
             <fieldset>
                 <input type="hidden" name="id" value="${post.id}">
                 <input type="hidden" name="userId" value="${post.userId}">
+
                 <label for="editPostForm">Topic </label>
                 <select name="topic" id="editPostForm" value="${post.topic}">
                     <option value="Career">Career</option>
@@ -53,11 +52,13 @@
             </fieldset>
         </form>
     </c:when>
+    <%-- Writing a Post --%>
     <c:otherwise>
     <h2>Write a Post</h2>
     <form action="/posts/create/${user.userId}" id="createPostForm" method="post">
         <fieldset>
             <input type="hidden" name="userId" value="${user.userId}">
+
             <label for="createPostForm">Topic</label>
                 <select name="topic" id="createPostForm">
                     <option value="Career">Career</option>
@@ -94,5 +95,5 @@
     </c:otherwise>
     </c:choose>
 </main>
-</body>
-</html>
+
+<jsp:include page="../include/footer.jsp" />

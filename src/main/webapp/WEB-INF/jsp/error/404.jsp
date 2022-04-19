@@ -1,10 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
+
+<jsp:include page="../include/header.jsp" />
     <title>Can't Find Page</title>
-    <link rel="stylesheet" type="text/css" href="../../../pub/css/nav.css">
     <style>
         div {
             align-items: center;
@@ -37,6 +34,7 @@
         }
     </style>
 </head>
+
 <body>
 <jsp:include page="../include/nav.jsp" />
 
@@ -47,5 +45,4 @@
     <p>Click <a href="/home/index">here</a> to return home.</p>
 </div>
 
-</body>
-</html>
+<jsp:include page="../include/footer.jsp" />
