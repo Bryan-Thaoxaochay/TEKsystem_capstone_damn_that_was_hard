@@ -34,7 +34,7 @@ public class PostController {
     // Getting Post(s) and Comments
     @GetMapping("/posts")
     public ModelAndView getAllPosts() {
-        List<Post> posts = postDAO.findAll();
+        List<Post> posts = postDAO.getAllPostsOrderByCreateDate();
 
         return new ModelAndView("post/posts").addObject("posts", posts);
     }
