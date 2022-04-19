@@ -19,7 +19,16 @@
             <fieldset>
                 <input type="hidden" name="id" value="${post.id}">
                 <input type="hidden" name="userId" value="${post.userId}">
-                <label for="editPostForm">Topic </label><input type="text" name="topic" class="topic" value="${post.topic}">
+                <label for="editPostForm">Topic </label>
+                <select name="topic" id="editPostForm" value="${post.topic}">
+                    <option value="Career">Career</option>
+                    <option value="Education">Education</option>
+                    <option value="Health/Wellness">Health and Wellness</option>
+                    <option value="Money">Money</option>
+                    <option value="Outdoors">Outdoors</option>
+                    <option value="Relationship">Relationships</option>
+                    <option value="Other">Other</option>
+                </select>
                 <c:forEach items="${bindingResult.getFieldErrors('topic')}" var="error">
                     <div class="createPostErrMsg">
                             ${error.getDefaultMessage()}
@@ -49,7 +58,16 @@
     <form action="/posts/create/${user.userId}" id="createPostForm" method="post">
         <fieldset>
             <input type="hidden" name="userId" value="${user.userId}">
-            <label for="createPostForm">Topic</label><input type="text" name="topic" class="topic">
+            <label for="createPostForm">Topic</label>
+                <select name="topic" id="createPostForm">
+                    <option value="Career">Career</option>
+                    <option value="Education">Education</option>
+                    <option value="Health/Wellness">Health and Wellness</option>
+                    <option value="Money">Money</option>
+                    <option value="Outdoors">Outdoors</option>
+                    <option value="Relationship">Relationships</option>
+                    <option value="Other">Other</option>
+                </select>
             <c:forEach items="${bindingResult.getFieldErrors('topic')}" var="error">
                 <div class="createPostErrMsg">
                         ${error.getDefaultMessage()}
