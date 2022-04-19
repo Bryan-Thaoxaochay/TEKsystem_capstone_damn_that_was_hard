@@ -8,6 +8,7 @@ import com.teksystems.capstone.database.entity.Comment;
 import com.teksystems.capstone.database.entity.Post;
 import com.teksystems.capstone.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -39,6 +40,7 @@ public class PostController {
         return new ModelAndView("post/posts").addObject("posts", posts);
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/posts/my_posts")
     public ModelAndView getUserPosts() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -67,6 +69,7 @@ public class PostController {
     }
 
     // Creating Post
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -76,6 +79,7 @@ public class PostController {
         return new ModelAndView("post/create_post").addObject("user", user);
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/posts/create/{userId}")
     public ModelAndView createPost(@PathVariable("userId") Integer userId, @Valid PostBean form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -94,6 +98,7 @@ public class PostController {
     }
 
     // Editing Post
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/posts/post/edit/{postId}")
     public ModelAndView displayEditPostPage(@PathVariable("postId") Integer postId) {
         Post post = postDAO.findById(postId);
@@ -101,6 +106,7 @@ public class PostController {
         return new ModelAndView("post/create_post").addObject("post", post);
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/posts/edit/{postId}")
     public ModelAndView editPost(@PathVariable("postId") Integer postId, @Valid PostBean form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -120,6 +126,7 @@ public class PostController {
     }
 
     // Deleting Post
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/posts/delete/{postId}")
     public ModelAndView deletePost(@PathVariable("postId") Integer postId) {
         Post post = postDAO.findById(postId);

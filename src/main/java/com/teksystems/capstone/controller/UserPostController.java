@@ -7,6 +7,7 @@ import com.teksystems.capstone.database.entity.Post;
 import com.teksystems.capstone.database.entity.User;
 import com.teksystems.capstone.database.entity.UserPost;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@PreAuthorize("hasAuthority('USER')")
 public class UserPostController {
     @Autowired
     private UserPostDAO userPostDAO;

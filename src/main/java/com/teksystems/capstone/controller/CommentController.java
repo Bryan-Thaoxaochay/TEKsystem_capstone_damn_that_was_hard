@@ -6,6 +6,7 @@ import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.entity.Comment;
 import com.teksystems.capstone.database.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Date;
 
 @Controller
+@PreAuthorize("hasAuthority('USER')")
 public class CommentController {
     @Autowired
     private CommentDAO commentDAO;
