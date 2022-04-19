@@ -20,8 +20,26 @@
                 <input type="hidden" name="id" value="${post.id}">
                 <input type="hidden" name="userId" value="${post.userId}">
                 <label for="editPostForm">Topic </label><input type="text" name="topic" class="topic" value="${post.topic}">
+                <c:forEach items="${bindingResult.getFieldErrors('topic')}" var="error">
+                    <div class="createPostErrMsg">
+                            ${error.getDefaultMessage()}
+                    </div>
+                </c:forEach>
+
                 <label for="editPostForm">Title </label><input type="text" name="title" class="title" value="${post.title}">
+                <c:forEach items="${bindingResult.getFieldErrors('title')}" var="error">
+                    <div class="createPostErrMsg">
+                            ${error.getDefaultMessage()}
+                    </div>
+                </c:forEach>
+
                 <label for="editPostForm">Description </label><textarea type="text" name="description" class="description">${post.description}</textarea>
+                <c:forEach items="${bindingResult.getFieldErrors('description')}" var="error">
+                    <div class="createPostErrMsg">
+                            ${error.getDefaultMessage()}
+                    </div>
+                </c:forEach>
+
                 <button type="submit"><i class="fas fa-pen"></i> Save</button>
             </fieldset>
         </form>
@@ -32,8 +50,26 @@
         <fieldset>
             <input type="hidden" name="userId" value="${user.userId}">
             <label for="createPostForm">Topic</label><input type="text" name="topic" class="topic">
+            <c:forEach items="${bindingResult.getFieldErrors('topic')}" var="error">
+                <div class="createPostErrMsg">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+
             <label for="createPostForm">Title</label><input type="text" name="title" class="title">
+            <c:forEach items="${bindingResult.getFieldErrors('title')}" var="error">
+                <div class="createPostErrMsg">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+
             <label for="createPostForm">Story</label><textarea type="text" name="description" class="description" placeholder="Feel free to tell your story here..."></textarea>
+            <c:forEach items="${bindingResult.getFieldErrors('description')}" var="error">
+                <div class="createPostErrMsg">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+
             <button type="submit"><i class="fas fa-pen"></i> Publish</button>
         </fieldset>
     </form>

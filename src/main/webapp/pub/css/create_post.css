@@ -53,3 +53,8 @@ main button {
 main button:hover {
     color: yellow;
 }
+
+/* Error Divs */
+.createPostErrMsg {
+    color: darkred;
+}

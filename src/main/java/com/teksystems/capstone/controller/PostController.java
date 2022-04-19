@@ -11,10 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -74,7 +77,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/create/{userId}")
-    public ModelAndView createPost(@PathVariable("userId") Integer userId, PostBean form) {
+    public ModelAndView createPost(@PathVariable("userId") Integer userId, @Valid PostBean form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("post/create_post")
+                    .addObject("bindingResult", bindingResult).addObject("form", form);
+        }
+
         Post post = new Post();
         post.setTopic(form.getTopic());
         post.setTitle(form.getTitle());
@@ -94,7 +102,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/edit/{postId}")
-    public ModelAndView editPost(@PathVariable("postId") Integer postId, PostBean form) {
+    public ModelAndView editPost(@PathVariable("postId") Integer postId, @Valid PostBean form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("post/create_post")
+                    .addObject("bindingResult", bindingResult).addObject("form", form);
+        }
+
         Post post = postDAO.findById(postId);
         post.setId(form.getId());
         post.setTopic(form.getTopic());
