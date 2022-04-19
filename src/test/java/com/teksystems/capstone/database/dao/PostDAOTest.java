@@ -22,7 +22,7 @@ public class PostDAOTest {
     private UserDAO userDAO;
 
     @BeforeEach
-    public void createUserAndPost() throws ParseException {
+    public void setup() throws ParseException {
         User newUser = new User();
         newUser.setFirstName("John");
         newUser.setLastName("Doe");
