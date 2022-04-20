@@ -8,6 +8,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @DataJpaTest
@@ -59,12 +60,13 @@ public class CommentDAOTest {
     @Test
     @Order(1)
     public void getAllCommentsByBlogpostId() {
-
+        Assertions.assertTrue(commentDAO.getAllByBlogpostId(1).size() > 0);
     }
 
     @Test
     @Order(2)
     public void findCommentById() {
-
+        log.info("----------------------" + commentDAO.findById(1).getComment());
+        Assertions.assertEquals("0: This story was amazing!", commentDAO.findById(1).getComment());
     }
 }
