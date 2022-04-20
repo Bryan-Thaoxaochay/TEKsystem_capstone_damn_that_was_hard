@@ -13,7 +13,7 @@
 
     </ul>
     </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
+    <sec:authorize access="hasAnyAuthority('ADMIN', 'USER')">
     <ul id="navAuthenticated">
         <li>
             <p>Posts</p>
