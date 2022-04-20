@@ -5,8 +5,8 @@
     <title>${post.title}</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/post.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/comments.css">
-    <script src="../../../pub/js/editComment.js" defer ></script>
-    <script src="../../../pub/js/displayComments.js" defer ></script>
+    <script src="../../../pub/js/comments/editComment.js" defer ></script>
+    <script src="../../../pub/js/comments/displayComments.js" defer ></script>
 </head>
 
 <body>
