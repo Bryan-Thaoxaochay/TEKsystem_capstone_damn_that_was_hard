@@ -11,6 +11,7 @@ import java.util.List;
 
 @Slf4j
 @DataJpaTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CommentDAOTest {
     @Autowired
@@ -22,7 +23,7 @@ public class CommentDAOTest {
     @Autowired
     private CommentDAO commentDAO;
 
-    @BeforeEach
+    @BeforeAll
     public void setup() {
         // Creating User
         User newUser = new User();

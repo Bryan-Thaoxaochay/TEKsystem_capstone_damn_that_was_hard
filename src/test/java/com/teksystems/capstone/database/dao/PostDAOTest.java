@@ -13,6 +13,7 @@ import java.util.List;
 
 @Slf4j
 @DataJpaTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PostDAOTest {
     @Autowired
@@ -21,7 +22,7 @@ public class PostDAOTest {
     @Autowired
     private UserDAO userDAO;
 
-    @BeforeEach
+    @BeforeAll
     public void setup() throws ParseException {
         User newUser = new User();
         newUser.setFirstName("John");
@@ -55,7 +56,7 @@ public class PostDAOTest {
     @Test
     @Order(2)
     public void findPostsByUserId() {
-        Assertions.assertTrue(postDAO.findByUserId(2).size() > 0);
+        Assertions.assertTrue(postDAO.findByUserId(1).size() > 0);
     }
 
     @Test
