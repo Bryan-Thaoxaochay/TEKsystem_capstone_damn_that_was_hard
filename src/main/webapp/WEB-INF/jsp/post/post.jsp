@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../../../pub/css/post.css">
     <link rel="stylesheet" type="text/css" href="../../../pub/css/comments.css">
     <script src="../../../pub/js/editComment.js" defer ></script>
+    <script src="../../../pub/js/displayComments.js" defer ></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                 <div>
                     <a href="/posts/post/edit/${post.id}" title="Edit story"><i class="fas fa-edit"></i></a>
                     <form action="/posts/delete/${post.id}" method="post">
-                        <input type="hidden" name="id" value="${post.id}"></label>
+                        <input type="hidden" name="id" value="${post.id}">
                         <button type="submit" title="Delete story"><i class="fas fa-trash-alt"></i></button>
                     </form>
                 </div>
@@ -44,7 +45,9 @@
     </section>
 </main>
 
-<aside>
+<input id="displayCommentsCheckBox" type="checkbox"><span>Hide Comments</span>
+
+<aside id="commentsContainer">
     <sec:authorize access="isAuthenticated()">
         <jsp:include page="../comment/create_comment.jsp" />
     </sec:authorize>
