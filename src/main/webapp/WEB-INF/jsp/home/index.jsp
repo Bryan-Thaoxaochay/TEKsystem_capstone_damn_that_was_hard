@@ -25,6 +25,10 @@
             <p>Click <a href="/user/sign_up">here</a> to sign up.</p>
             <p>If you already have an account: click <a href="/user/sign_in">here</a> to sign in.</p>
         </sec:authorize>
+
+        <sec:authorize access="isAuthenticated()">
+            <p>Welcome Back ${user.username}</p>
+        </sec:authorize>
     </section>
 </main>
 
