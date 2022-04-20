@@ -4,6 +4,8 @@ import com.teksystems.capstone.database.entity.Post;
 import com.teksystems.capstone.database.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import java.text.ParseException;
@@ -47,11 +49,12 @@ public class PostDAOTest {
         }
     }
 
-    @Test
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4})
     @Order(1)
-    public void findPostById() {
-        log.info("--------------------" + postDAO.findById(1).getTitle());
-        Assertions.assertNotNull(postDAO.findById(1));
+    public void findPostById(Integer id) {
+        log.info("--------------------" + postDAO.findById(id).getTitle());
+        Assertions.assertNotNull(postDAO.findById(id));
     }
 
     @Test
