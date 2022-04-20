@@ -50,6 +50,7 @@ public class PostDAOTest {
     @Test
     @Order(1)
     public void findPostById() {
+        log.info("--------------------" + postDAO.findById(1).getTitle());
         Assertions.assertNotNull(postDAO.findById(1));
     }
 
@@ -65,6 +66,10 @@ public class PostDAOTest {
         List<Post> posts = postDAO.getAllPostsOrderByCreateDate();
         Date laterDate = posts.get(0).getCreateDate();
         Date beforeDate = posts.get(posts.size() - 1).getCreateDate();
+
+        log.info("---------------- Later Date: " + laterDate.toString());
+        log.info("---------------- Before Date: " + beforeDate.toString());
+
         Assertions.assertTrue(beforeDate.compareTo(laterDate) < 0);
     }
 }
