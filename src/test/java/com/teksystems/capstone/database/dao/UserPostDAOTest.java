@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @DataJpaTest
@@ -79,5 +80,60 @@ public class UserPostDAOTest {
         log.info("--------------Post: " + postDAO.findById(1).getTitle());
 
         Assertions.assertNotNull(userPostDAO.findUserPostByUserIdAndPostId(userId, 1));
+    }
+
+    // CRUD Tests
+    @Test
+    @Order(3)
+    public void createUserPost() {
+        User userCreatingPost = userDAO.findByEmail("john_doe@example.com");
+        User userSavingPost = userDAO.findByEmail("jane_doe@example.com");
+
+        Post newPost = new Post();
+            newPost.setUserId(userCreatingPost.getUserId());
+            newPost.setTopic("Education");
+            newPost.setTitle("School is life");
+            newPost.setDescription("Lorem ipsum dolor sit amet, consectetur " +
+                    "adipiscing elit, sed do eiusmod tempor incididunt ut ");
+            postDAO.save(newPost);
+
+        List<Post> posts = postDAO.getAllPostsOrderByCreateDate();
+        Post post = postDAO.findById(posts.size() - 1);
+        log.info("------------------------" + (Objects.equals(post.getTitle(), "School is life")));
+
+        int userPostLength = userPostDAO.findAll().size();
+
+        UserPost savedPost = new UserPost();
+            savedPost.setPostId(post.getId());
+            savedPost.setUserId(userSavingPost.getUserId());
+            userPostDAO.save(savedPost);
+
+        int updatedUserPostLength = userPostDAO.findAll().size();
+
+        Assertions.assertTrue(updatedUserPostLength > userPostLength);
+    }
+
+    @Test
+    @Order(4)
+    public void readUserPost() {
+        int userId = userDAO.findByUserId(2).getUserId();
+        int postId = postDAO.findById(1).getId();
+
+        log.info("--------------------- " + userId);
+        log.info("--------------------- " + postId);
+
+        UserPost userPost = userPostDAO.findUserPostByUserIdAndPostId(userId, postId);
+
+        log.info("--------------------- " + userPost.toString());
+        Assertions.assertNotNull(userPost);
+    }
+
+    @Test
+    @Order(6)
+    public void deleteUserPost() {
+        UserPost userPost = userPostDAO.findUserPostByUserIdAndPostId(2, 1);
+        userPostDAO.delete(userPost);
+
+        Assertions.assertNull(userPostDAO.findUserPostByUserIdAndPostId(2, 1));
     }
 }
