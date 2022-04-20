@@ -7,6 +7,7 @@ import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.entity.Comment;
 import com.teksystems.capstone.database.entity.Post;
 import com.teksystems.capstone.database.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.List;
 
+@Slf4j
 @Controller
 public class PostController {
     @Autowired
@@ -48,6 +50,7 @@ public class PostController {
         User user = userDAO.findByEmail(userEmail);
 
         List<Post> userPosts = postDAO.findByUserId(user.getUserId());
+        userPosts.forEach(savedPost -> log.info(savedPost.getTopic()));
 
         return new ModelAndView("post/posts").addObject("posts", userPosts);
     }
@@ -65,7 +68,8 @@ public class PostController {
 
         return new ModelAndView("post/post")
                 .addObject("post", post).addObject("comments", comments)
-                .addObject("currentUser", currentUser).addObject("postUser", postUser);
+                .addObject("currentUser", currentUser).addObject("postUser", postUser)
+                .addObject("numOfComments", comments.stream().count());
     }
 
     // Creating Post

@@ -48,6 +48,7 @@
 <input id="displayCommentsCheckBox" type="checkbox"><span>Hide Comments</span>
 
 <aside id="commentsContainer">
+    <h3>${numOfComments} Comment(s)</h3>
     <sec:authorize access="isAuthenticated()">
         <jsp:include page="../comment/create_comment.jsp" />
     </sec:authorize>
