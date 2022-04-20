@@ -75,4 +75,54 @@ public class PostDAOTest {
 
         Assertions.assertTrue(beforeDate.compareTo(laterDate) < 0);
     }
+
+    // CRUD Tests
+    @Test
+    @Order(4)
+    public void createPost() {
+        User user = userDAO.findByEmail("john_doe@example.com");
+
+        Post newPost = new Post();
+        newPost.setUserId(user.getUserId());
+        newPost.setTopic("Education");
+        newPost.setTitle("School is rough");
+        newPost.setDescription("Lorem ipsum dolor sit amet, consectetur " +
+                "adipiscing elit, sed do eiusmod tempor incididunt ut ");
+        postDAO.save(newPost);
+
+        List<Post> posts = postDAO.findAll();
+        log.info("-------------Title: " + posts.get(posts.size() - 1).getTitle());
+        Assertions.assertNotNull(posts.get(posts.size() - 1));
+    }
+
+    @Test
+    @Order(5)
+    public void readPost() {
+        Post post = postDAO.findById(1);
+        Assertions.assertEquals("Career", post.getTopic());
+        Assertions.assertEquals("1: I can't find a job!", post.getTitle());
+        Assertions.assertEquals("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
+                " tempor incididunt ut ", post.getDescription());
+    }
+
+    @Test
+    @Order(6)
+    public void updatePost() {
+        Post post = postDAO.findById(1);
+        post.setTopic("Education");
+        postDAO.save(post);
+
+        Post updatedPost = postDAO.findById(1);
+        log.info("----------------Topic: " + updatedPost.getTopic());
+        Assertions.assertEquals("Education", updatedPost.getTopic());
+    }
+
+    @Test
+    @Order(7)
+    public void deletePost() {
+        Post post = postDAO.findById(1);
+        postDAO.delete(post);
+
+        Assertions.assertNull(postDAO.findById(1));
+    }
 }
