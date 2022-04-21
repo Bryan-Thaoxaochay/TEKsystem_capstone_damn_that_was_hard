@@ -59,7 +59,7 @@ public class CommentDAOTest {
     @Test
     @Order(1)
     public void getAllCommentsByBlogpostId() {
-        Assertions.assertTrue(commentDAO.getAllByBlogpostId(1).size() > 0);
+        Assertions.assertTrue(commentDAO.getAllByBlogpostIdOrderByUpdateDateDesc(1).size() > 0);
     }
 
     @Test

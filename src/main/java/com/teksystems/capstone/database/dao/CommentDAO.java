@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface CommentDAO extends JpaRepository<Comment, Long> {
-    List<Comment> getAllByBlogpostId(@Param("id") Integer blogpostId);
+    List<Comment> getAllByBlogpostIdOrderByUpdateDateDesc(@Param("id") Integer blogpostId);
     Comment findById(@Param("commentId") Integer commentId);
 }
