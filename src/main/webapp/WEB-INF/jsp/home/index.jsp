@@ -3,6 +3,8 @@
 <jsp:include page="../include/header.jsp" />
     <title>Damn That Was Hard</title>
     <link rel="stylesheet" type="text/css" href="../../../pub/css/index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../../../pub/js/home/quotes.js" defer></script>
 </head>
 
 <body>
@@ -12,8 +14,8 @@
     <section class="topSection">
         <h3>Everyone has a motivating story to tell.</h3>
         <a href="/posts">Click Here to Read Them</a>
-        <blockquote>If you're going through hell, keep going.</blockquote>
-        <p><em>~ Winston Churchill</em></p>
+        <blockquote id="blockquote"></blockquote>
+        <p><em id="author"></em></p>
     </section>
 
     <img src="../../../pub/images/boat_sunset.webp" alt="boat sunset">
