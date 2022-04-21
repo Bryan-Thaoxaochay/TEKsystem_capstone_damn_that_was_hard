@@ -18,6 +18,7 @@
         <li>
             <p>Posts</p>
             <div class="dropdown-content">
+                <a href="/posts">All Posts</a>
                 <a href="/posts/my_posts">My Posts</a>
                 <a href="/posts/saved_posts">Saved Posts</a>
                 <a href="/posts/create_post">Create a Post</a>
