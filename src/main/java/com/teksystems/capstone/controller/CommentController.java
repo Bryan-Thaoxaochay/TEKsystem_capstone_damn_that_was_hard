@@ -29,22 +29,17 @@ public class CommentController {
     // Creating a comment
     @PostMapping("/comment/create/{postId}")
     public ModelAndView createComment(@PathVariable("postId") Integer postId, CommentBean form) {
-        ModelAndView response = new ModelAndView();
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
-
         User user = userDAO.findByEmail(userEmail);
 
         Comment comment = new Comment();
-        comment.setComment(form.getComment());
-        comment.setBlogpostId(postId);
-        comment.setUserId(user.getUserId());
+            comment.setComment(form.getComment());
+            comment.setBlogpostId(postId);
+            comment.setUserId(user.getUserId());
+            commentDAO.save(comment);
 
-        commentDAO.save(comment);
-
-        response.setViewName("redirect:/posts/post/" + postId);
-        return response;
+        return new ModelAndView("redirect:/posts/post/" + postId);
     }
 
     // Editing a comment

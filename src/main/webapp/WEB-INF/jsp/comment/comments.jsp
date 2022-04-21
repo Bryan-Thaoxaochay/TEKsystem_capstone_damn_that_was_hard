@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:forEach items="${comments}" var="comment">
+<c:forEach items="${comments}" var="comment" varStatus="id">
     <div id="commentDiv">
         <header>
             <section>
-                <h5>${postUser.username}</h5>
+                <h5>${commentUsers.get(id.count - 1)}</h5>
                 <p><em class="commentDates">${comment.updateDate}</em></p>
             </section>
             <c:if test="${comment.userId == currentUser.userId}">

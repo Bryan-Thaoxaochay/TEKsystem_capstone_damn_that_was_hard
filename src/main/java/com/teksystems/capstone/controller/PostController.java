@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -57,19 +58,24 @@ public class PostController {
 
     @GetMapping("/posts/post/{postId}")
     public ModelAndView getPostAndComments(@PathVariable("postId") Integer postId) throws Exception {
-        Post post = postDAO.findById(postId);
-        List<Comment> comments = commentDAO.getAllByBlogpostId(postId);
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
         User currentUser = userDAO.findByEmail(userEmail);
 
+        Post post = postDAO.findById(postId);
+        List<Comment> comments = commentDAO.getAllByBlogpostIdOrderByUpdateDateDesc(postId);
         User postUser = userDAO.findByUserId(post.getUserId());
+        List<String> commentUsers = new ArrayList<>();
+
+        for (Comment comment : comments) {
+            String username = userDAO.findByUserId(comment.getUserId()).getUsername();
+            commentUsers.add(username);
+        }
 
         return new ModelAndView("post/post")
-                .addObject("post", post).addObject("comments", comments)
-                .addObject("currentUser", currentUser).addObject("postUser", postUser)
-                .addObject("numOfComments", comments.stream().count());
+            .addObject("post", post).addObject("comments", comments)
+            .addObject("currentUser", currentUser).addObject("postUser", postUser)
+            .addObject("numOfComments", comments.stream().count()).addObject("commentUsers", commentUsers);
     }
 
     // Creating Post
