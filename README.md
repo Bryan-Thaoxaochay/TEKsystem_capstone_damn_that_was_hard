@@ -53,3 +53,6 @@ Deleting
 1. As a signed-in user, I want to delete my past blog posts so that others can't read them.  
 2. As a signed-in user, I want to delete my past comments so that others can't read them.  
 3. As a signed-in user, I want to delete a saved blog post so that it doesn't show up anymore.  
+
+### **ERD Diagram**
+![ERD Diagram](../../TEKsystem_capstone_erd.png)
