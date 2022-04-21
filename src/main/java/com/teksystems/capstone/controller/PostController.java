@@ -7,7 +7,6 @@ import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.entity.Comment;
 import com.teksystems.capstone.database.entity.Post;
 import com.teksystems.capstone.database.entity.User;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -18,12 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Controller
 public class PostController {
     @Autowired
@@ -47,11 +44,9 @@ public class PostController {
     @GetMapping("/posts/my_posts")
     public ModelAndView getUserPosts() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(authentication.getName());
 
-        List<Post> userPosts = postDAO.findByUserId(user.getUserId());
-        userPosts.forEach(savedPost -> log.info(savedPost.getTopic()));
+        List<Post> userPosts = postDAO.findByUserId(currentUser.getUserId());
 
         return new ModelAndView("post/posts").addObject("posts", userPosts);
     }
@@ -59,23 +54,19 @@ public class PostController {
     @GetMapping("/posts/post/{postId}")
     public ModelAndView getPostAndComments(@PathVariable("postId") Integer postId) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User currentUser = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(authentication.getName());
 
         Post post = postDAO.findById(postId);
         List<Comment> comments = commentDAO.getAllByBlogpostIdOrderByUpdateDateDesc(postId);
         User postUser = userDAO.findByUserId(post.getUserId());
         List<String> commentUsers = new ArrayList<>();
 
-        for (Comment comment : comments) {
-            String username = userDAO.findByUserId(comment.getUserId()).getUsername();
-            commentUsers.add(username);
-        }
+        comments.forEach(comment -> commentUsers.add(userDAO.findByUserId(comment.getUserId()).getUsername()));
 
         return new ModelAndView("post/post")
             .addObject("post", post).addObject("comments", comments)
             .addObject("currentUser", currentUser).addObject("postUser", postUser)
-            .addObject("numOfComments", comments.stream().count()).addObject("commentUsers", commentUsers);
+            .addObject("commentUsers", commentUsers).addObject("numOfComments", comments.stream().count());
     }
 
     // Creating Post
@@ -83,26 +74,25 @@ public class PostController {
     @GetMapping("/posts/create_post")
     public ModelAndView displayCreatePostPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(authentication.getName());
 
-        return new ModelAndView("post/create_post").addObject("user", user);
+        return new ModelAndView("post/create_post").addObject("currentUser", currentUser);
     }
 
     @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/posts/create/{userId}")
     public ModelAndView createPost(@PathVariable("userId") Integer userId, @Valid PostBean form, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("post/create_post")
-                    .addObject("bindingResult", bindingResult).addObject("form", form);
+            return new ModelAndView("post/create_post").addObject("bindingResult", bindingResult)
+                                                                .addObject("form", form);
         }
 
         Post post = new Post();
-        post.setTopic(form.getTopic());
-        post.setTitle(form.getTitle());
-        post.setDescription(form.getDescription());
-        post.setUserId(userId);
-        postDAO.save(post);
+            post.setTopic(form.getTopic());
+            post.setTitle(form.getTitle());
+            post.setDescription(form.getDescription());
+            post.setUserId(userId);
+            postDAO.save(post);
 
         return new ModelAndView("redirect:/posts/my_posts");
     }
@@ -125,12 +115,12 @@ public class PostController {
         }
 
         Post post = postDAO.findById(postId);
-        post.setId(form.getId());
-        post.setTopic(form.getTopic());
-        post.setTitle(form.getTitle());
-        post.setDescription(form.getDescription());
-        post.setUserId(form.getUserId());
-        postDAO.save(post);
+            post.setId(form.getId());
+            post.setTopic(form.getTopic());
+            post.setTitle(form.getTitle());
+            post.setDescription(form.getDescription());
+            post.setUserId(form.getUserId());
+            postDAO.save(post);
 
         return new ModelAndView("redirect:/posts/post/" + postId);
     }

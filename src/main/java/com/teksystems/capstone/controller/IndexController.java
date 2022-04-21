@@ -20,8 +20,7 @@ public class IndexController {
 
         if (authentication == null) { return new ModelAndView("home/index"); }
 
-        String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
-        return new ModelAndView("home/index").addObject("user", user);
+        User currentUser = userDAO.findByEmail(authentication.getName());
+        return new ModelAndView("home/index").addObject("currentUser", currentUser);
     }
 }

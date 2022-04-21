@@ -56,9 +56,9 @@
     <%-- Writing a Post --%>
     <c:otherwise>
     <h2>Write a Post</h2>
-    <form action="/posts/create/${user.userId}" id="createPostForm" method="post">
+    <form action="/posts/create/${currentUser.userId}" id="createPostForm" method="post">
         <fieldset>
-            <input type="hidden" name="userId" value="${user.userId}">
+            <input type="hidden" name="userId" value="${currentUser.userId}">
 
             <label for="createPostForm">Topic</label>
                 <select name="topic" id="createPostForm">

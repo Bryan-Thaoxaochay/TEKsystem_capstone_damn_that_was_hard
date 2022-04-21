@@ -34,27 +34,15 @@ public class UserPostController {
     // Display saved posts
     @GetMapping("/posts/saved_posts")
     public ModelAndView getSavedPosts(@RequestParam(value = "notSaved", defaultValue = "false") Boolean postSaved) {
-        ModelAndView response = new ModelAndView();
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(authentication.getName());
 
-        List<UserPost> userPostList = userPostDAO.getAllByUserId(user.getUserId());
-
+        List<UserPost> userPostList = userPostDAO.getAllByUserId(currentUser.getUserId());
         List<Post> savedPosts = new ArrayList<>();
+        userPostList.forEach(userPost -> savedPosts.add(postDAO.findById(userPost.getPostId())));
 
-        for (UserPost userPost : userPostList) {
-            Post savedPost = postDAO.findById(userPost.getPostId());
-            savedPosts.add(savedPost);
-        }
-
-        response.addObject("posts", savedPosts);
-        response.setViewName("post/saved_posts");
-
-        if (postSaved) {
-            response.addObject("unableToSave", "Story already saved");
-        }
+        ModelAndView response = new ModelAndView("post/saved_posts").addObject("posts", savedPosts);
+        if (postSaved) { response.addObject("unableToSave", "Story already saved"); }
 
         return response;
     }
@@ -63,15 +51,14 @@ public class UserPostController {
     @PostMapping("/posts/save")
     public ModelAndView savePost(@RequestParam("id") Integer postId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(authentication.getName());
 
-        if (userPostDAO.findUserPostByUserIdAndPostId(user.getUserId(), postId) != null) {
+        if (userPostDAO.findUserPostByUserIdAndPostId(currentUser.getUserId(), postId) != null) {
             return new ModelAndView("redirect:/posts/saved_posts").addObject("notSaved", "true");
         }
 
         UserPost userPost = new UserPost();
-            userPost.setUserId(user.getUserId());
+            userPost.setUserId(currentUser.getUserId());
             userPost.setPostId(postId);
             userPostDAO.save(userPost);
 
@@ -81,17 +68,12 @@ public class UserPostController {
     // Removing a post
     @PostMapping("/posts/saved_posts/{id}")
     public ModelAndView removePost(@RequestParam("postId") Integer postId) {
-        ModelAndView response = new ModelAndView();
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userEmail = authentication.getName();
-        User user = userDAO.findByEmail(userEmail);
+        User currentUser = userDAO.findByEmail(authentication.getName());
 
-        UserPost userPost = userPostDAO.findUserPostByUserIdAndPostId(user.getUserId(), postId);
-
+        UserPost userPost = userPostDAO.findUserPostByUserIdAndPostId(currentUser.getUserId(), postId);
         userPostDAO.delete(userPost);
 
-        response.setViewName("redirect:/posts/saved_posts");
-        return response;
+        return new ModelAndView("redirect:/posts/saved_posts");
     }
 }

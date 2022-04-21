@@ -29,7 +29,7 @@
         </sec:authorize>
 
         <sec:authorize access="isAuthenticated()">
-            <p>Welcome Back ${user.username}</p>
+            <p>Welcome Back ${currentUser.username}</p>
         </sec:authorize>
     </section>
 </main>

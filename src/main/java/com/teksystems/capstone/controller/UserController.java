@@ -33,8 +33,7 @@ public class UserController {
     @GetMapping("/user/sign_in")
     public ModelAndView displaySignInPage(@RequestParam(value = "error", defaultValue = "false") Boolean signInError) {
         if (signInError) {
-            return new ModelAndView("user/sign_in")
-                    .addObject("signInErrorMsg", "Username or password is incorrect.");
+            return new ModelAndView("user/sign_in").addObject("signInErrorMsg", "Username or password is incorrect.");
         }
 
         return new ModelAndView("user/sign_in");
@@ -48,22 +47,22 @@ public class UserController {
         }
 
         if (!form.getPassword().equals(form.getConfirmPassword())) {
-            return new ModelAndView("user/sign_up")
+            return new ModelAndView("user/sign_up").addObject("form", form)
                     .addObject("passwordMessage", "This doesn't match the password above.");
         }
 
         User user = new User();
-        user.setFirstName(form.getFirstName());
-        user.setLastName(form.getLastName());
-        user.setUsername(form.getUsername());
-        user.setEmail(form.getEmail());
-        user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
-        userDAO.save(user);
+            user.setFirstName(form.getFirstName());
+            user.setLastName(form.getLastName());
+            user.setUsername(form.getUsername());
+            user.setEmail(form.getEmail());
+            user.setPassword(bCryptPasswordEncoder.encode(form.getPassword()));
+            userDAO.save(user);
 
-        User createdUser = userDAO.findByUsername(form.getUsername());
         UserRole userRole = new UserRole();
-        userRole.setUserId(createdUser.getUserId());
-        userRoleDAO.save(userRole);
+            User createdUser = userDAO.findByUsername(form.getUsername());
+            userRole.setUserId(createdUser.getUserId());
+            userRoleDAO.save(userRole);
 
         return new ModelAndView("redirect:/home/index");
     }
