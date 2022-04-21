@@ -9,8 +9,6 @@ import lombok.ToString;
 @ToString
 public class CommentBean {
     private Integer id;
-
     private String comment;
-
     private String blogpostId;
 }
