@@ -10,6 +10,7 @@
 <jsp:include page="../include/nav.jsp" />
 
 <h2>Saved Stories</h2>
+<p>${unableToSave}</p>
 <main id="recentPosts">
     <c:forEach items="${posts}" var="post">
         <section>

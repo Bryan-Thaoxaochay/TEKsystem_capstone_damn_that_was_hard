@@ -33,7 +33,7 @@ public class UserPostController {
 
     // Display saved posts
     @GetMapping("/posts/saved_posts")
-    public ModelAndView getSavedPosts() {
+    public ModelAndView getSavedPosts(@RequestParam(value = "notSaved", defaultValue = "false") Boolean postSaved) {
         ModelAndView response = new ModelAndView();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -51,26 +51,31 @@ public class UserPostController {
 
         response.addObject("posts", savedPosts);
         response.setViewName("post/saved_posts");
+
+        if (postSaved) {
+            response.addObject("unableToSave", "Story already saved");
+        }
+
         return response;
     }
 
     // Saving a post
     @PostMapping("/posts/save")
     public ModelAndView savePost(@RequestParam("id") Integer postId) {
-        ModelAndView response = new ModelAndView();
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
         User user = userDAO.findByEmail(userEmail);
 
+        if (userPostDAO.findUserPostByUserIdAndPostId(user.getUserId(), postId) != null) {
+            return new ModelAndView("redirect:/posts/saved_posts").addObject("notSaved", "true");
+        }
+
         UserPost userPost = new UserPost();
-        userPost.setUserId(user.getUserId());
-        userPost.setPostId(postId);
+            userPost.setUserId(user.getUserId());
+            userPost.setPostId(postId);
+            userPostDAO.save(userPost);
 
-        userPostDAO.save(userPost);
-
-        response.setViewName("redirect:/posts/saved_posts");
-        return response;
+        return new ModelAndView("redirect:/posts/saved_posts");
     }
 
     // Removing a post
