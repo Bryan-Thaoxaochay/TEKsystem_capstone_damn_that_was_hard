@@ -11,8 +11,6 @@ import java.util.List;
 public interface PostDAO extends JpaRepository<Post, Long> {
     Post findById(@Param("id") Integer id);
     List<Post> findByUserId(@Param("userId") Integer userId);
-    @Query(
-            value = "SELECT * FROM blogposts bp ORDER BY bp.created_at DESC",
-            nativeQuery = true)
-    List<Post> getAllPostsOrderByCreateDate();
+    @Query( value = "SELECT * FROM blogposts bp ORDER BY bp.created_at DESC", nativeQuery = true )
+        List<Post> getAllPostsOrderByCreateDate();
 }
