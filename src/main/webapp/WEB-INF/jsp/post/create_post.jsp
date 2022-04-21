@@ -19,7 +19,8 @@
                 <input type="hidden" name="userId" value="${post.userId}">
 
                 <label for="editPostForm">Topic </label>
-                <select name="topic" id="editPostForm" value="${post.topic}">
+                <select name="topic" id="editPostForm">
+                    <option ${post.topic}>${post.topic}</option>
                     <option value="Career">Career</option>
                     <option value="Education">Education</option>
                     <option value="Health/Wellness">Health and Wellness</option>
