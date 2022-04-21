@@ -5,7 +5,7 @@
         <header>
             <section>
                 <h5>${postUser.username}</h5>
-                <p><em>${comment.updateDate}</em></p>
+                <p><em class="commentDates">${comment.updateDate}</em></p>
             </section>
             <c:if test="${comment.userId == currentUser.userId}">
                 <div id="editDeleteDiv">

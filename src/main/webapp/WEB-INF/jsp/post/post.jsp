@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../../../pub/css/comments.css">
     <script src="../../../pub/js/comments/editComment.js" defer ></script>
     <script src="../../../pub/js/comments/displayComments.js" defer ></script>
+    <script src="../../../pub/js/posts/dates.js" defer ></script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@
         </sec:authorize>
     </header>
 
-    <p>${post.createDate}</p>
+    <p id="postDate">${post.createDate}</p>
 
     <section>
         <h2>${post.title}</h2>
