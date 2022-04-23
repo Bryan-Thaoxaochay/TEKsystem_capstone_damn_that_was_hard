@@ -2,6 +2,7 @@ package com.teksystems.capstone.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.teksystems.capstone.bean.SignUpBean;
+import com.teksystems.capstone.bean.UserBean;
 import com.teksystems.capstone.database.dao.UserDAO;
 import com.teksystems.capstone.database.dao.UserRoleDAO;
 import com.teksystems.capstone.database.entity.User;
@@ -75,5 +76,25 @@ public class UserController {
         User currentUser = userDAO.findByEmail(authentication.getName());
 
         return new ModelAndView("user/user_profile").addObject("currentUser", currentUser);
+    }
+
+    @PostMapping("/user/edit")
+    public ModelAndView editUser(@Valid UserBean form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("user/user_profile")
+                    .addObject("bindingResult", bindingResult);
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = userDAO.findByEmail(authentication.getName());
+
+        User editUser = userDAO.findByUserId(currentUser.getUserId());
+            editUser.setFirstName(form.getFirstName());
+            editUser.setLastName(form.getLastName());
+            editUser.setUsername(form.getUsername());
+            editUser.setEmail(form.getEmail());
+            userDAO.save(editUser);
+
+        return new ModelAndView("redirect:/user/information");
     }
 }
