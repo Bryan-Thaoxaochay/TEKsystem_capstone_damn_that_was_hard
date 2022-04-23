@@ -57,7 +57,7 @@ nav ul li p:hover {
 
 }
 
-.dropdown-content {
+.post-dropdown, .account-dropdown {
     background-color: #314455;
     color: orange;
     display: none;
@@ -66,12 +66,12 @@ nav ul li p:hover {
     z-index: 1;
 }
 
-.dropdown-content > a {
+.post-dropdown > a, .account-dropdown > a {
     font-size: medium;
     padding: 0.5rem;
 }
 
-nav ul li:hover .dropdown-content {
+nav ul li:hover .post-dropdown, nav ul li:hover .account-dropdown {
     display: flex;
     flex-direction: column;
     margin: 0;

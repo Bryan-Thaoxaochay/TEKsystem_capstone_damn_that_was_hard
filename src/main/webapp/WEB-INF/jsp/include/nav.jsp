@@ -17,7 +17,7 @@
     <ul id="navAuthenticated">
         <li>
             <p>Posts</p>
-            <div class="dropdown-content">
+            <div class="post-dropdown">
                 <a href="/posts">All Posts</a>
                 <a href="/posts/my_posts">My Posts</a>
                 <a href="/posts/saved_posts">Saved Posts</a>
@@ -25,7 +25,11 @@
             </div>
         </li>
         <li>
-            <a href="/user/logout">Sign Out</a>
+            <p>Account</p>
+            <div class="account-dropdown">
+                <a href="/user/information">Profile</a>
+                <a href="/user/logout">Sign Out</a>
+            </div>
         </li>
     </ul>
     </sec:authorize>
