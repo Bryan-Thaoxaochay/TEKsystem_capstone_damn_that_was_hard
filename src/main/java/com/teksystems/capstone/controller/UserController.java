@@ -97,4 +97,12 @@ public class UserController {
 
         return new ModelAndView("redirect:/user/information");
     }
+
+    @PostMapping("/user/delete")
+    public ModelAndView deleteUser(@RequestParam("userId") Integer userId) {
+        User currentUser = userDAO.findByUserId(userId);
+            userDAO.delete(currentUser);
+
+        return new ModelAndView("redirect:/user/logout");
+    }
 }

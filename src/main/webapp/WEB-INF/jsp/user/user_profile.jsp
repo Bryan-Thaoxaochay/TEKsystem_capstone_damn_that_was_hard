@@ -12,6 +12,10 @@
     <h1 id="name">${currentUser.firstName} ${currentUser.lastName}</h1><button id="userEditLink"><i class="fas fa-pen"></i></button>
     <p id="username">Username: ${currentUser.username}</p>
     <p id="email">Email: ${currentUser.email}</p>
+    <form action="/user/delete" method="post">
+        <input type="hidden" name="userId" value="${currentUser.userId}"/>
+        <button type="submit">Delete Account</button>
+    </form>
 </main>
 
 <%--<section>--%>
