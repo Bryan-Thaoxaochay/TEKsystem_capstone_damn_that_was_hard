@@ -55,4 +55,4 @@ Deleting
 3. As a signed-in user, I want to delete a saved blog post so that it doesn't show up anymore.  
 
 ### **ERD Diagram**
-![TEKsystem_capstone_erd](https://user-images.githubusercontent.com/73510167/164546805-45454ba4-ebe4-42be-86e3-e301065c63a3.png)
+![TEKsystem_capstone_erd](https://user-images.githubusercontent.com/73510167/165343837-267f0d43-c81b-4e8d-8d44-10f2893f2767.png)
